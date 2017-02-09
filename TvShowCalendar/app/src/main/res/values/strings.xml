@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">TvShowCalendar</string>
     <string name="title_activity_main">MainActivity</string>
+    <string name="top_10_serials">Top 10 Serials</string>
 </resources>

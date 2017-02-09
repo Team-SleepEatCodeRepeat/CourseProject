@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:id="@+id/programlist"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:theme="@style/AppTheme">
+
+    <ImageView
+        android:id="@+id/iv_movie_image"
+        android:layout_gravity="center"
+        android:layout_width="170dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="2dp"
+        android:background="@color/icons"
+        android:src="@drawable/the_vampire_diaries"/>
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_marginTop="3dp"
+        android:text="TextView"/>
+
+    <TextView
+        android:id="@+id/tv_seasons"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:layout_marginBottom="3dp"
+        android:text="TextView"/>
+</LinearLayout>
