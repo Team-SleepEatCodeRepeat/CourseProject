@@ -16,9 +16,8 @@ import com.telerikproject.tvshowcalendar.R;
 
 import java.util.ArrayList;
 
-public class MainActivity extends Activity {
+public class MainActivity extends AppCompatActivity {
     GridView gridView;
-    Context context;
 
     public static int[] moviesImages = {R.drawable.the_originals, R.drawable.game_of_thrones,
                                         R.drawable.mr_robot, R.drawable.the_big_bang_theory,
