@@ -12,6 +12,7 @@
 
     <style name="AppTheme.Toolbar" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="android:textColorPrimary">#FFF</item>
+        <item name="android:textColorSecondary">#FFF</item>
     </style>
 
 </resources>
