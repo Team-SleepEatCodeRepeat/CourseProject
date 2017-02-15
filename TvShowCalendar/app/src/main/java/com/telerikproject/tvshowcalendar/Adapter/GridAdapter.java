@@ -12,10 +12,6 @@ import android.widget.Toast;
 import com.telerikproject.tvshowcalendar.R;
 import com.telerikproject.tvshowcalendar.activities.MainActivity;
 
-/**
- * Created by Admin68 on 9.2.2017 г..
- */
-
 public class GridAdapter extends BaseAdapter {
 
     String[] titles;
@@ -65,7 +61,6 @@ public class GridAdapter extends BaseAdapter {
         holder.titles = (TextView) rowView.findViewById(R.id.tv_title);
         holder.images = (ImageView) rowView.findViewById(R.id.iv_movie_image);
         holder.series = (TextView) rowView.findViewById(R.id.tv_seasons);
-
 
         holder.titles.setText(titles[position]);
         holder.images.setImageResource(imageId[position]);

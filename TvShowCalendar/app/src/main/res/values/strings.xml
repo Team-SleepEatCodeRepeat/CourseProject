@@ -1,5 +1,13 @@
 <resources>
     <string name="app_name">TvShowCalendar</string>
     <string name="title_activity_main">MainActivity</string>
-    <string name="top_10_serials">Top 10 Serials</string>
+    <string name="top_10">TOP 10</string>
+
+    <string name="profile">PROFILE</string>
+    <string name="activity">ACTIVITY</string>
+    <string name="settings">SETTINGS</string>
+    <string name="following">FOLLOWING</string>
+    <string name="coming_soon">COMING SOON</string>
+    <string name="search">SEARCH</string>
+    <string name="exit">EXIT</string>
 </resources>

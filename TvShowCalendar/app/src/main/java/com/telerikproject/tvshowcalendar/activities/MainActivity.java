@@ -1,20 +1,14 @@
 package com.telerikproject.tvshowcalendar.activities;
 
-import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.View;
 import android.widget.GridView;
 
+import android.widget.Toast;
 import com.telerikproject.tvshowcalendar.Adapter.GridAdapter;
 import com.telerikproject.tvshowcalendar.R;
-
-import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     GridView gridView;
@@ -30,17 +24,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         gridView = (GridView) findViewById(R.id.gv_top_10);
         gridView.setAdapter(new GridAdapter(this, moviesTitles, moviesSeasons, moviesImages));
-
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        this.setSupportActionBar(toolbar);
     }
-
-//    @Override
-//    public boolean onPrepareOptionsMenu(Menu menu) {
-//
-//        getMenuInflater().inflate(R.menu.menu, menu);
-//        return true;
-//    }
 }
