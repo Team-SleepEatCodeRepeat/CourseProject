@@ -24,4 +24,6 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email completions."</string>
     <string name="no_account">Don\'t have an account?</string>
     <string name="sign_up">Sign Up</string>
+    <string name="terms_and_privacy_policy">By signing up, you are agreeing with our terms of use and privacy policy.</string>
+    <string name="register">Sign up</string>
 </resources>

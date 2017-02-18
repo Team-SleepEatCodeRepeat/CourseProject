@@ -1,6 +1,7 @@
 package com.telerikproject.tvshowcalendar.activities;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -28,4 +29,22 @@ public class MainActivity extends AppCompatActivity {
         gridView = (GridView) findViewById(R.id.gv_top_10);
         gridView.setAdapter(new GridAdapter(this, moviesTitles, moviesSeasons, moviesImages));
     }
+
+    public void ClickedSignIn(View view) {
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+
+    }
+
+//    public void onClick(View v) {
+//
+//
+//         setContentView(R.layout.activity_login);
+////        Intent intent = new Intent(this, LoginActivity.class);
+////        startActivity(intent);
+////        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+////        startActivity(intent);
+//
+//    }
+
 }
