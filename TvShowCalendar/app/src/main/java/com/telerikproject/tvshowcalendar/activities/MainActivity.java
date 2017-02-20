@@ -1,14 +1,10 @@
 package com.telerikproject.tvshowcalendar.activities;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 import android.widget.GridView;
 
-import android.widget.Toast;
 import com.telerikproject.tvshowcalendar.Adapter.GridAdapter;
-import com.telerikproject.tvshowcalendar.ApplicationComponent;
 import com.telerikproject.tvshowcalendar.BaseApplication;
 import com.telerikproject.tvshowcalendar.R;
 
@@ -26,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         this.injectDependencies();
 
         gridView = (GridView) findViewById(R.id.gv_top_10);
