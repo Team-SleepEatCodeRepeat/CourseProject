@@ -1,5 +1,6 @@
-package com.telerikproject.tvshowcalendar.Adapter;
+package com.telerikproject.tvshowcalendar.adapters;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,7 +11,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.telerikproject.tvshowcalendar.R;
-import com.telerikproject.tvshowcalendar.activities.MainActivity;
 
 public class GridAdapter extends BaseAdapter {
 
@@ -21,10 +21,10 @@ public class GridAdapter extends BaseAdapter {
 
     private static LayoutInflater inflater = null;
 
-    public GridAdapter(MainActivity mainActivity, String[] moviesTitles, String[] moviesSeasons, int[] moviesImages) {
+    public GridAdapter(Activity choosenActivity, String[] moviesTitles, String[] moviesSeasons, int[] moviesImages) {
         titles = moviesTitles;
         series = moviesSeasons;
-        context = mainActivity;
+        context = choosenActivity;
         imageId = moviesImages;
 
         inflater = (LayoutInflater) context.
