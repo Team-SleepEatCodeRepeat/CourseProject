@@ -42,9 +42,7 @@
                 <TextView
                     android:id="@+id/login"
                     style="@style/TextView.GuillotineItem"
-                    android:text="Sign in(temporary)"
-                    android:clickable="true"
-                    android:onClick="ClickedSignIn"/>
+                    android:text="Sign in(temporary)"/>
             </LinearLayout>
 
             <LinearLayout
@@ -60,9 +58,7 @@
                 <TextView
                     android:id="@+id/tv_user"
                     style="@style/TextView.GuillotineItem"
-                    android:text="@string/profile"
-                    android:clickable="true"
-                    android:onClick="ClickedProfile"/>
+                    android:text="@string/profile"/>
             </LinearLayout>
 
             <View

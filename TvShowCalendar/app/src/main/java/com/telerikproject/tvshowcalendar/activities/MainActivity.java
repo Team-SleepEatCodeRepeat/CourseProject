@@ -30,18 +30,7 @@ public class MainActivity extends AppCompatActivity {
         gridView.setAdapter(new GridAdapter(this, moviesTitles, moviesSeasons, moviesImages));
     }
 
-    public void ClickedSignIn(View view) {
-        Intent intent = new Intent(this, LoginActivity.class);
-        startActivity(intent);
-
-    }
-
     private void injectDependencies() {
         ((BaseApplication) getApplication()).getAppComponent().inject(this);
-    }
-
-    public void ClickedProfile(View view) {
-        Intent intent = new Intent(this, ProfileActivity.class);
-        startActivity(intent);
     }
 }

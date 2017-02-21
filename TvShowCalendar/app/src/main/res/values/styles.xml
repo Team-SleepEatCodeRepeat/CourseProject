@@ -20,6 +20,8 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:orientation">horizontal</item>
         <item name="android:layout_marginTop">@dimen/guillotine_small_margin</item>
+        <item name="android:clickable">true</item>
+
     </style>
 
     <style name="TextView" />
