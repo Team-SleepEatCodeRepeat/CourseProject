@@ -1,5 +1,6 @@
 package com.telerikproject.tvshowcalendar.modules;
 
+import android.app.Application;
 import android.content.Context;
 
 import com.telerikproject.tvshowcalendar.factories.HttpResponseFactory;
@@ -17,18 +18,18 @@ import dagger.Provides;
 
 @Module
 public class ApplicationModule {
-    private final Context ctx;
+    private final Application application;
 
     @Inject
-    public ApplicationModule(Context ctx) {
+    public ApplicationModule(Application application) {
 
-        this.ctx = ctx;
+        this.application = application;
     }
 
     @Provides
     @Singleton
-    public Context provideCtx() {
-        return this.ctx;
+    public Context provideContext() {
+        return this.application;
     }
 
     @Inject

@@ -62,7 +62,6 @@ public class ToolbarFragment extends Fragment implements View.OnClickListener
     public void onClick(View v) {
 //        Toast.makeText(getContext() , v.getId() + " " , Toast.LENGTH_LONG).show();
     }
-}
 
 //        guillotineMenu.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -81,3 +80,4 @@ public class ToolbarFragment extends Fragment implements View.OnClickListener
 //        });
 
 
+}

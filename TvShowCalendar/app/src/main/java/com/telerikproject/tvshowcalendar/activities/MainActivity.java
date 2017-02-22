@@ -6,9 +6,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.GridView;
 
+import com.telerikproject.tvshowcalendar.ControllerComponent;
 import com.telerikproject.tvshowcalendar.adapters.GridAdapter;
 import com.telerikproject.tvshowcalendar.BaseApplication;
 import com.telerikproject.tvshowcalendar.R;
+import com.telerikproject.tvshowcalendar.modules.ControllerModule;
+
+import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
     GridView gridView;
@@ -31,6 +35,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void injectDependencies() {
-        ((BaseApplication) getApplication()).getAppComponent().inject(this);
+        BaseApplication.bind(this)
+                .from(this)
+                .getAppComponent()
+                .getControllerComponent(new ControllerModule(this, getSupportFragmentManager()))
+                .inject(this);
     }
 }
