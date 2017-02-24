@@ -1,21 +1,24 @@
-package com.telerikproject.tvshowcalendar.activities;
+package com.telerikproject.tvshowcalendar.views.home;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.GridView;
 
-import com.telerikproject.tvshowcalendar.ControllerComponent;
-import com.telerikproject.tvshowcalendar.adapters.GridAdapter;
 import com.telerikproject.tvshowcalendar.BaseApplication;
 import com.telerikproject.tvshowcalendar.R;
 import com.telerikproject.tvshowcalendar.modules.ControllerModule;
+import com.telerikproject.tvshowcalendar.views.home.base.IHomeContract;
 
-import butterknife.ButterKnife;
+import javax.inject.Inject;
 
-public class MainActivity extends AppCompatActivity {
-    GridView gridView;
+public class HomeActivity extends AppCompatActivity {
+    @Inject
+    IHomeContract.Presenter contentPresenter;
+
+    @Inject
+    FragmentManager fragmentManager;
+
+    private HomeContentFragment content;
 
     public static int[] moviesImages = {R.drawable.the_originals, R.drawable.game_of_thrones,
             R.drawable.mr_robot, R.drawable.the_big_bang_theory,
@@ -29,8 +32,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         this.injectDependencies();
 
-        gridView = (GridView) findViewById(R.id.gv_top_10);
-        gridView.setAdapter(new GridAdapter(this, moviesTitles, moviesSeasons, moviesImages));
+        content = (HomeContentFragment) fragmentManager.findFragmentById(R.id.fragment_home_content);
+
+        contentPresenter.setView(content);
+//        content.setPresenter(contentPresenter);
+
     }
 
     private void injectDependencies() {

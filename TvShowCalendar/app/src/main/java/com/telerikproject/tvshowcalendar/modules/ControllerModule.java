@@ -4,6 +4,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.support.v4.app.FragmentManager;
 
+import com.telerikproject.tvshowcalendar.views.home.HomeContentPresenter;
+import com.telerikproject.tvshowcalendar.views.home.base.IHomeContract;
+
 import dagger.Module;
 import dagger.Provides;
 
@@ -31,5 +34,10 @@ public class ControllerModule {
     @Provides
     FragmentManager provideFragmentManager() {
         return this.fragmentManager;
+    }
+
+    @Provides
+    IHomeContract.Presenter provideHomeContentPresenter() {
+        return new HomeContentPresenter();
     }
 }

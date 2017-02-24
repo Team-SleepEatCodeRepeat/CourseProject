@@ -1,22 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/activity_main"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/guillotine_background">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/guillotine_background"
+    android:orientation="vertical">
 
     <fragment
         android:id="@+id/fragment"
         android:name="com.telerikproject.tvshowcalendar.fragments.ToolbarFragment"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content" />
 
-    <GridView
-            android:id="@+id/gv_top_10"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/fragment"
-            android:numColumns="2">
-    </GridView>
-</RelativeLayout>
+    <fragment
+        android:id="@+id/fragment_home_content"
+        android:name="com.telerikproject.tvshowcalendar.views.home.HomeContentFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>

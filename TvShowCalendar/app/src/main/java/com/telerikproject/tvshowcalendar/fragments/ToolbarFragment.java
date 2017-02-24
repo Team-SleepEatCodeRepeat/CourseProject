@@ -13,7 +13,6 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.mikepenz.fontawesome_typeface_library.FontAwesome;
-import com.mikepenz.material_design_iconic_typeface_library.MaterialDesignIconic;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
 import com.mikepenz.materialdrawer.model.DividerDrawerItem;
@@ -22,7 +21,7 @@ import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.telerikproject.tvshowcalendar.R;
 import com.telerikproject.tvshowcalendar.activities.LoginActivity;
-import com.telerikproject.tvshowcalendar.activities.MainActivity;
+import com.telerikproject.tvshowcalendar.views.home.HomeActivity;
 import com.telerikproject.tvshowcalendar.activities.ProfileActivity;
 
 /**
@@ -90,7 +89,7 @@ public class ToolbarFragment extends Fragment {
                     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
                         switch (position) {
                             case 0:
-                                Intent home = new Intent(getActivity(), MainActivity.class);
+                                Intent home = new Intent(getActivity(), HomeActivity.class);
                                 startActivity(home);
                                 break;
                             case 2:
