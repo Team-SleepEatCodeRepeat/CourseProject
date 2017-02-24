@@ -38,15 +38,15 @@ public class ProfileOptionsFragment extends Fragment {
         View root = null;
         switch (position) {
             case 0:
-                root = inflater.inflate(R.layout.fragment_profile_options, container, false);
-                break;
+                View following = inflater.inflate(R.layout.fragment_profile_options, container, false);
+                return following;
             case 1:
-                root = inflater.inflate(R.layout.profile_watched, container, false);
-                break;
+                View watched = inflater.inflate(R.layout.profile_watched, container, false);
+                return watched;
             case 2:
-                root = inflater.inflate(R.layout.profile_coming_soon, container, false);
-                break;
+                View comingSoon  = inflater.inflate(R.layout.profile_coming_soon, container, false);
+                return comingSoon;
         }
-        return root;
+        return  root;
     }
 }
