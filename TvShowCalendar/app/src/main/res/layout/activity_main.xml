@@ -7,10 +7,10 @@
         android:background="@color/guillotine_background">
 
     <fragment
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/fragment"
-            android:name="com.telerikproject.tvshowcalendar.fragments.ToolbarFragment"/>
+        android:id="@+id/fragment"
+        android:name="com.telerikproject.tvshowcalendar.fragments.ToolbarFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
     <GridView
             android:id="@+id/gv_top_10"

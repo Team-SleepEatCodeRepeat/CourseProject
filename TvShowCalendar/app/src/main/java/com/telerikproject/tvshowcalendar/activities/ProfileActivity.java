@@ -24,6 +24,8 @@ public class ProfileActivity extends AppCompatActivity {
         // Bind the tabs to the ViewPager
         PagerSlidingTabStrip tabs = (PagerSlidingTabStrip) findViewById(R.id.tabs);
         tabs.setViewPager(pager);
+        
+        setTitle("Profile");
     }
 
     public class TabsNavigationAdapter extends FragmentStatePagerAdapter {

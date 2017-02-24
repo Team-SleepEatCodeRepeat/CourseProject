@@ -16,15 +16,8 @@
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             app:contentInsetStart="0dp"
-            style="@style/Toolbar">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:textColor="@color/primary_text"
-                android:text="Sign In"
-                android:textSize="@dimen/guillotine_item_text_size"/>
+            style="@style/Toolbar"
+            android:paddingStart="@dimen/activity_horizontal_margin">
         </android.support.v7.widget.Toolbar>
     </LinearLayout>
 
@@ -77,7 +70,7 @@
                         android:layout_height="wrap_content"
                         android:hint="@string/prompt_password"
                         android:imeActionId="@+id/login"
-                        android:imeActionLabel="@string/action_sign_in_short"
+                        android:imeActionLabel="@string/action_sign_in"
                         android:imeOptions="actionUnspecified"
                         android:inputType="textPassword"
                         android:maxLines="1"

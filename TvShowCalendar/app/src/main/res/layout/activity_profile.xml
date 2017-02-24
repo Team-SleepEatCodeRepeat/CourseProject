@@ -7,12 +7,11 @@
     android:orientation="vertical"
     tools:context="com.telerikproject.tvshowcalendar.activities.ProfileActivity">
 
-    <android.support.v7.widget.Toolbar
+    <fragment
+        android:id="@+id/fragment"
+        android:name="com.telerikproject.tvshowcalendar.fragments.ToolbarFragment"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/accent">
-
-    </android.support.v7.widget.Toolbar>
+        android:layout_height="wrap_content"/>
 
     <com.astuetz.PagerSlidingTabStrip
         android:id="@+id/tabs"
