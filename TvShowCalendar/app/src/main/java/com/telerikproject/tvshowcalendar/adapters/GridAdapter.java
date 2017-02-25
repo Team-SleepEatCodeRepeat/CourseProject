@@ -10,22 +10,27 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.telerikproject.tvshowcalendar.R;
+
+import java.util.ArrayList;
 
 public class GridAdapter extends BaseAdapter {
 
-    String[] titles;
-    String[] series;
+    ArrayList<String> titles;
+    ArrayList<String> ratings;
     Context context;
-    int[] imageId;
+    ArrayList<String> images;
+
+
 
     private static LayoutInflater inflater = null;
 
-    public GridAdapter(Activity choosenActivity, String[] moviesTitles, String[] moviesSeasons, int[] moviesImages) {
+    public GridAdapter(Activity choosenActivity, ArrayList<String> moviesTitles, ArrayList<String> moviesRating, ArrayList<String> moviesImages) {
         titles = moviesTitles;
-        series = moviesSeasons;
+        ratings = moviesRating;
         context = choosenActivity;
-        imageId = moviesImages;
+        images = moviesImages;
 
         inflater = (LayoutInflater) context.
                 getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -33,7 +38,7 @@ public class GridAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return titles.length;
+        return titles.size();
     }
 
     @Override
@@ -48,7 +53,7 @@ public class GridAdapter extends BaseAdapter {
 
     public class Holder {
         TextView titles;
-        TextView series;
+        TextView ratings;
         ImageView images;
     }
 
@@ -60,21 +65,22 @@ public class GridAdapter extends BaseAdapter {
         rowView = inflater.inflate(R.layout.grid_list, null);
         holder.titles = (TextView) rowView.findViewById(R.id.tv_title);
         holder.images = (ImageView) rowView.findViewById(R.id.iv_movie_image);
-        holder.series = (TextView) rowView.findViewById(R.id.tv_seasons);
+        holder.ratings = (TextView) rowView.findViewById(R.id.tv_seasons);
 
-        holder.titles.setText(titles[position]);
-        holder.images.setImageResource(imageId[position]);
-        holder.series.setText(series[position]);
+        holder.titles.setText(titles.get(position));
+        Glide.with(context).load(images.get(position)).into(holder.images);
+        holder.ratings.setText(ratings.get(position));
 
         rowView.setOnClickListener(new View.OnClickListener() {
 
             @Override
 
             public void onClick(View v) {
-                Toast.makeText(context, "You Clicked " + titles[position], Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "You Clicked " + titles.get(position), Toast.LENGTH_SHORT).show();
             }
         });
 
         return rowView;
     }
+
 }

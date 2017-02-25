@@ -20,12 +20,6 @@ public class HomeActivity extends AppCompatActivity {
 
     private HomeContentFragment content;
 
-    public static int[] moviesImages = {R.drawable.the_originals, R.drawable.game_of_thrones,
-            R.drawable.mr_robot, R.drawable.the_big_bang_theory,
-            R.drawable.the_vampire_diaries, R.drawable.un_barco_en_el_espejo};
-    public static String[] moviesTitles = {"The Originals", "Game Of Thrones", "Mr. Robot", "The Big Bang Theory", "The Vampire Diaries", "El Barco"};
-    public static String[] moviesSeasons = {"4 seasons", "7 seasons", "3 seasons", "10 seasons", "8 seasons", "3 seasons"};
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,7 +29,7 @@ public class HomeActivity extends AppCompatActivity {
         content = (HomeContentFragment) fragmentManager.findFragmentById(R.id.fragment_home_content);
 
         contentPresenter.setView(content);
-//        content.setPresenter(contentPresenter);
+        content.setPresenter(contentPresenter);
 
     }
 
