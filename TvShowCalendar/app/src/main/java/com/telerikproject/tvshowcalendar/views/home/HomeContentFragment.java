@@ -121,7 +121,6 @@ public class HomeContentFragment extends Fragment implements IHomeContract.View 
 
                     @Override
                     public void onError(Throwable e) {
-                        Throwable asd = e;
                     }
 
                     @Override
