@@ -4,6 +4,8 @@ import android.app.Application;
 import android.content.Context;
 import android.support.v4.app.FragmentManager;
 
+import com.telerikproject.tvshowcalendar.constants.TheMovieDbConstants;
+import com.telerikproject.tvshowcalendar.constants.base.ITheMovieDbConstants;
 import com.telerikproject.tvshowcalendar.factories.HttpResponseFactory;
 import com.telerikproject.tvshowcalendar.factories.base.IHttpResponseFactory;
 import com.telerikproject.tvshowcalendar.fragments.ILoadingFragment;
@@ -75,12 +77,18 @@ public class ApplicationModule {
     @Inject
     @Provides
     ITvShowData provideTvShowData(IOkHttpRequester okHttpRequester, IJsonParser jsonParser,
-                                  @TvShowModel Type tvShowModelType, @PopularTvShowsResultModel Type TopTvShows) {
-        return new TvShowData(okHttpRequester, jsonParser, tvShowModelType, TopTvShows);
+                                  @TvShowModel Type tvShowModelType, @PopularTvShowsResultModel Type TopTvShows,
+                                  ITheMovieDbConstants tmdbConstants) {
+        return new TvShowData(okHttpRequester, jsonParser, tvShowModelType, TopTvShows, tmdbConstants);
     }
 
     @Provides
     ILoadingFragment provideLoadingFragment() {
         return new LoadingFragment();
+    }
+
+    @Provides
+    ITheMovieDbConstants provideTMDBConstants() {
+        return new TheMovieDbConstants();
     }
 }
