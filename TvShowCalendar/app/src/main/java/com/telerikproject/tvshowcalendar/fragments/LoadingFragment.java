@@ -3,7 +3,7 @@ package com.telerikproject.tvshowcalendar.fragments;
 import android.app.ProgressDialog;
 import android.content.Context;
 
-public class LoadingFragment {
+public class LoadingFragment implements ILoadingFragment {
 
     private ProgressDialog loadingDialog;
     private Context context;
@@ -26,7 +26,7 @@ public class LoadingFragment {
         this.loadingDialog.hide();
     }
 
-    public static LoadingFragment create(Context context) {
+    public ILoadingFragment create(Context context) {
         LoadingFragment loadingFragment = new LoadingFragment();
         loadingFragment.setContext(context);
         return loadingFragment;

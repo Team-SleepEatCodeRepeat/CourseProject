@@ -2,28 +2,23 @@ package com.telerikproject.tvshowcalendar.views.home;
 
 
 import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
-
-import com.bumptech.glide.Glide;
 import com.telerikproject.tvshowcalendar.BaseApplication;
 import com.telerikproject.tvshowcalendar.R;
 import com.telerikproject.tvshowcalendar.adapters.GridAdapter;
+import com.telerikproject.tvshowcalendar.fragments.ILoadingFragment;
 import com.telerikproject.tvshowcalendar.models.TvShowModel;
 import com.telerikproject.tvshowcalendar.models.base.IPopularTvShowsModel;
-import com.telerikproject.tvshowcalendar.models.base.ITvShowModel;
 import com.telerikproject.tvshowcalendar.modules.ControllerModule;
 import com.telerikproject.tvshowcalendar.network.base.ITvShowData;
 import com.telerikproject.tvshowcalendar.views.home.base.IHomeContract;
 
 import java.util.ArrayList;
-import java.util.List;
-
 import javax.inject.Inject;
 
 import io.reactivex.Observer;
@@ -35,6 +30,9 @@ import io.reactivex.schedulers.Schedulers;
 public class HomeContentFragment extends Fragment implements IHomeContract.View {
 
     private IHomeContract.Presenter presenter;
+
+    @Inject
+    ILoadingFragment loadingFragment;
 
     @Inject
     public Activity mActivity;
@@ -69,8 +67,9 @@ public class HomeContentFragment extends Fragment implements IHomeContract.View 
         this.moviesImages = new ArrayList<>();
         this.moviesTitles = new ArrayList<>();
         this.moviesRating = new ArrayList<>();
+        ILoadingFragment loading = loadingFragment.create(mActivity);
 
-        getTopTvShows();
+        getTopTvShows(loading);
 
 
         gridView = (GridView) view.findViewById(R.id.gv_top_10);
@@ -95,18 +94,20 @@ public class HomeContentFragment extends Fragment implements IHomeContract.View 
                 .inject(this);
     }
 
-    private void getTopTvShows() {
+    private void getTopTvShows(final ILoadingFragment loading) {
         tvShowData.getTopTvShows()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<IPopularTvShowsModel>() {
                     @Override
                     public void onSubscribe(Disposable d) {
-                        int a = 5;
+
+                        loading.show();
                     }
 
                     @Override
                     public void onNext(IPopularTvShowsModel value) {
+
                         ArrayList<TvShowModel> tvShows = value.getResults();
 
                         for(TvShowModel tvShow: tvShows) {
@@ -126,6 +127,7 @@ public class HomeContentFragment extends Fragment implements IHomeContract.View 
                     @Override
                     public void onComplete() {
                         gridView.setAdapter(new GridAdapter(mActivity, moviesTitles, moviesRating, moviesImages));
+                        loading.hide();
                     }
                 });
     }
