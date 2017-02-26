@@ -21,6 +21,7 @@ import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.telerikproject.tvshowcalendar.R;
 import com.telerikproject.tvshowcalendar.activities.LoginActivity;
+import com.telerikproject.tvshowcalendar.activities.SerialInfoActivity;
 import com.telerikproject.tvshowcalendar.views.home.HomeActivity;
 import com.telerikproject.tvshowcalendar.activities.ProfileActivity;
 
@@ -97,7 +98,8 @@ public class ToolbarFragment extends Fragment {
                                 startActivity(profile);
                                 break;
                             case 3:
-                                Toast.makeText(getActivity(), "settings", Toast.LENGTH_SHORT).show();
+                                Intent info = new Intent(getActivity(), SerialInfoActivity.class);
+                                startActivity(info);
                                 break;
                             case 4:
                                 Intent login = new Intent(getActivity(), LoginActivity.class);
