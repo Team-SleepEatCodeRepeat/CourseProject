@@ -116,7 +116,7 @@ public class HomeContentFragment extends Fragment implements IHomeContract.View 
                         for(TvShowModel tvShow: tvShows) {
                             String poster = "https://image.tmdb.org/t/p/w640" + tvShow.getPoster();
                             String name = tvShow.getName();
-                            double vote = tvShow.getVote();
+                            double vote = (double) Math.round(tvShow.getVote() * 10) / 10;
                             int id = tvShow.getId();
                             moviesImages.add(poster);
                             moviesTitles.add(name);
