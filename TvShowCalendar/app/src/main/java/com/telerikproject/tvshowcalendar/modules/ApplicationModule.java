@@ -10,6 +10,7 @@ import com.telerikproject.tvshowcalendar.factories.HttpResponseFactory;
 import com.telerikproject.tvshowcalendar.factories.base.IHttpResponseFactory;
 import com.telerikproject.tvshowcalendar.fragments.ILoadingFragment;
 import com.telerikproject.tvshowcalendar.fragments.LoadingFragment;
+import com.telerikproject.tvshowcalendar.modules.annotations.DetailedTvShowModel;
 import com.telerikproject.tvshowcalendar.modules.annotations.PopularTvShowsResultModel;
 import com.telerikproject.tvshowcalendar.modules.annotations.TvShowModel;
 import com.telerikproject.tvshowcalendar.network.TvShowData;
@@ -63,8 +64,14 @@ public class ApplicationModule {
 
     @Provides
     @TvShowModel
-    Type providetvShowModelType() {
+    Type provideTvShowModelType() {
         return com.telerikproject.tvshowcalendar.models.TvShowModel.class;
+    }
+
+    @Provides
+    @DetailedTvShowModel
+    Type provideDetailedTvShowModelType() {
+        return com.telerikproject.tvshowcalendar.models.DetailedTvShowModel.class;
     }
 
     @Provides
@@ -78,8 +85,9 @@ public class ApplicationModule {
     @Provides
     ITvShowData provideTvShowData(IOkHttpRequester okHttpRequester, IJsonParser jsonParser,
                                   @TvShowModel Type tvShowModelType, @PopularTvShowsResultModel Type TopTvShows,
+                                  @DetailedTvShowModel Type detailedTvShowModelType,
                                   ITheMovieDbConstants tmdbConstants) {
-        return new TvShowData(okHttpRequester, jsonParser, tvShowModelType, TopTvShows, tmdbConstants);
+        return new TvShowData(okHttpRequester, jsonParser, tvShowModelType, TopTvShows, detailedTvShowModelType, tmdbConstants);
     }
 
     @Provides

@@ -18,7 +18,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".views.home.HomeActivity"
-            android:label="Home"
+            android:label="Tv Show Calendar"
             android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -35,7 +35,7 @@
         <activity
             android:name=".activities.ProfileActivity"
             android:label="Profile" />
-        <activity android:name=".activities.SerialInfoActivity"
+        <activity android:name=".views.serialInfo.SerialInfoActivity"
             android:label="Serial Info">
         </activity>
     </application>

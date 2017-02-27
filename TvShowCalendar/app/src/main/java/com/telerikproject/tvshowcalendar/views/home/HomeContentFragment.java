@@ -48,6 +48,7 @@ public class HomeContentFragment extends Fragment implements IHomeContract.View 
 
     public ArrayList<String> moviesTitles;
     public ArrayList<String> moviesRating;
+    public ArrayList<Integer> moviesIds;
     GridView gridView;
 
 
@@ -67,6 +68,8 @@ public class HomeContentFragment extends Fragment implements IHomeContract.View 
         this.moviesImages = new ArrayList<>();
         this.moviesTitles = new ArrayList<>();
         this.moviesRating = new ArrayList<>();
+        this.moviesIds = new ArrayList<>();
+
         ILoadingFragment loading = loadingFragment.create(mActivity);
 
         getTopTvShows(loading);
@@ -114,9 +117,11 @@ public class HomeContentFragment extends Fragment implements IHomeContract.View 
                             String poster = "https://image.tmdb.org/t/p/w640" + tvShow.getPoster();
                             String name = tvShow.getName();
                             double vote = tvShow.getVote();
+                            int id = tvShow.getId();
                             moviesImages.add(poster);
                             moviesTitles.add(name);
                             moviesRating.add(vote + " / 10");
+                            moviesIds.add(id);
                         }
                     }
 
@@ -126,7 +131,7 @@ public class HomeContentFragment extends Fragment implements IHomeContract.View 
 
                     @Override
                     public void onComplete() {
-                        gridView.setAdapter(new GridAdapter(mActivity, moviesTitles, moviesRating, moviesImages));
+                        gridView.setAdapter(new GridAdapter(mActivity, moviesTitles, moviesRating, moviesImages, moviesIds));
                         loading.hide();
                     }
                 });

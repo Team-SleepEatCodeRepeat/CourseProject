@@ -10,7 +10,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.mikepenz.fontawesome_typeface_library.FontAwesome;
 import com.mikepenz.materialdrawer.Drawer;
@@ -21,7 +20,7 @@ import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.telerikproject.tvshowcalendar.R;
 import com.telerikproject.tvshowcalendar.activities.LoginActivity;
-import com.telerikproject.tvshowcalendar.activities.SerialInfoActivity;
+import com.telerikproject.tvshowcalendar.views.serialInfo.SerialInfoActivity;
 import com.telerikproject.tvshowcalendar.views.home.HomeActivity;
 import com.telerikproject.tvshowcalendar.activities.ProfileActivity;
 

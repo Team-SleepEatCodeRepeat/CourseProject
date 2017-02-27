@@ -22,7 +22,7 @@ public final class TheMovieDbConstants implements ITheMovieDbConstants {
 
     @Override
     public String getTvDetailsUrl(int serialId) {
-        return String.format("%s%s%s", tvShowsBaseUrl, serialId, tMDBApiKey);
+        return String.format("%s/%s%s", tvShowsBaseUrl, serialId, tMDBApiKey);
     }
 
     @Override

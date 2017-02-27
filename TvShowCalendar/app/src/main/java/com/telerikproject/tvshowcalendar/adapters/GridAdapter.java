@@ -2,6 +2,7 @@ package com.telerikproject.tvshowcalendar.adapters;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.telerikproject.tvshowcalendar.R;
+import com.telerikproject.tvshowcalendar.views.serialInfo.SerialInfoActivity;
 
 import java.util.ArrayList;
 
@@ -21,16 +23,18 @@ public class GridAdapter extends BaseAdapter {
     ArrayList<String> ratings;
     Context context;
     ArrayList<String> images;
+    ArrayList<Integer> ids;
 
 
 
     private static LayoutInflater inflater = null;
 
-    public GridAdapter(Activity choosenActivity, ArrayList<String> moviesTitles, ArrayList<String> moviesRating, ArrayList<String> moviesImages) {
+    public GridAdapter(Activity choosenActivity, ArrayList<String> moviesTitles, ArrayList<String> moviesRating, ArrayList<String> moviesImages, ArrayList<Integer> ids) {
         titles = moviesTitles;
         ratings = moviesRating;
         context = choosenActivity;
         images = moviesImages;
+        this.ids = ids;
 
         inflater = (LayoutInflater) context.
                 getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -55,6 +59,7 @@ public class GridAdapter extends BaseAdapter {
         TextView titles;
         TextView ratings;
         ImageView images;
+        int ids;
     }
 
     @Override
@@ -76,7 +81,9 @@ public class GridAdapter extends BaseAdapter {
             @Override
 
             public void onClick(View v) {
-                Toast.makeText(context, "You Clicked " + titles.get(position), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(context, SerialInfoActivity.class);
+                intent.putExtra("id", ids.get(position));
+                context.startActivity(intent);
             }
         });
 

@@ -1,134 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_serial_info"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.telerikproject.tvshowcalendar.activities.SerialInfoActivity">
+    android:orientation="vertical"
+    tools:context="com.telerikproject.tvshowcalendar.views.serialInfo.SerialInfoActivity">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
-        style="@style/Toolbar"
-        android:paddingStart="@dimen/activity_horizontal_margin"
-        app:title="The Originals" />
-
-    <FrameLayout
-        android:id="@+id/fl_series_image"
+    <fragment
+        android:id="@+id/fragment"
+        android:name="com.telerikproject.tvshowcalendar.fragments.ToolbarFragment"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/toolbar">
+        android:layout_height="wrap_content" />
 
-        <ImageView
-            android:id="@+id/movie_image"
-            android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:maxHeight="250dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/the_originals_backdrop" />
-
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/gradient_series_image" />
-    </FrameLayout>
-
-    <TextView
-        android:id="@+id/tv_rating"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/fl_series_image"
-        android:layout_alignEnd="@id/fl_series_image"
-        android:layout_marginBottom="10dp"
-        android:layout_marginEnd="47dp"
-        android:text="8.5"
-        android:textColor="#e5e5e5"
-        android:textSize="35sp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignBaseline="@id/tv_rating"
-        android:layout_marginBottom="10dp"
-        android:layout_marginEnd="@dimen/activity_horizontal_margin"
-        android:text="/10"
-        android:textColor="#b2b2b2"
-        android:textSize="20sp"
-        android:textStyle="italic"/>
-
-    <LinearLayout
+    <fragment
+        android:id="@+id/fragment_serial_info_content"
+        android:name="com.telerikproject.tvshowcalendar.views.serialInfo.SerialInfoContentFragment"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/fl_series_image"
-        android:orientation="vertical"
-        android:paddingEnd="@dimen/activity_horizontal_margin"
-        android:paddingStart="@dimen/activity_horizontal_margin">
+        android:layout_height="match_parent" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/activity_vertical_margin"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/btn_follow"
-                style="@style/Widget.AppCompat.Button.Borderless"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:layout_marginEnd="15dp"
-                android:layout_marginTop="10dp"
-                android:layout_weight="1"
-                android:background="@drawable/ripple_effect"
-                android:drawablePadding="5dp"
-                android:drawableStart="@drawable/ic_following"
-                android:paddingEnd="15dp"
-                android:paddingStart="15dp"
-                android:text="Following"
-                android:textColor="#4c4c4c" />
-
-            <Button
-                android:id="@+id/btn_watched"
-                style="@style/Widget.AppCompat.Button.Borderless"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="10dp"
-                android:layout_weight="1"
-                android:background="@drawable/ripple_effect"
-                android:drawablePadding="5dp"
-                android:drawableStart="@drawable/ic_watched"
-                android:paddingEnd="15dp"
-                android:paddingStart="15dp"
-                android:text="Watched"
-                android:textColor="#4c4c4c" />
-        </LinearLayout>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:text="Description:"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/tv_description"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:maxLines="6"
-            android:minLines="1"
-            android:scrollbars="vertical"
-            android:text="A family of power-hungry thousand year old vampires look to take back the city that they built and dominate all those who have done them wrong.A family of power-hungry thousand year old vampires look to take back the city that they built and dominate all those who have done them wrong."
-            android:textSize="18sp" />
-
-        <ExpandableListView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-        </ExpandableListView>
-
-    </LinearLayout>
-</RelativeLayout>
+   </LinearLayout>

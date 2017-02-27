@@ -2,7 +2,10 @@ package com.telerikproject.tvshowcalendar.network;
 
 import com.telerikproject.tvshowcalendar.constants.TheMovieDbConstants;
 import com.telerikproject.tvshowcalendar.constants.base.ITheMovieDbConstants;
+import com.telerikproject.tvshowcalendar.models.base.IDetailedTvShowModel;
+import com.telerikproject.tvshowcalendar.models.base.IDetailedTvShowSeasonModel;
 import com.telerikproject.tvshowcalendar.models.base.IPopularTvShowsModel;
+import com.telerikproject.tvshowcalendar.models.base.ITvShowModel;
 import com.telerikproject.tvshowcalendar.network.base.ITvShowData;
 import com.telerikproject.tvshowcalendar.utils.base.IJsonParser;
 import com.telerikproject.tvshowcalendar.utils.base.IOkHttpRequester;
@@ -23,13 +26,15 @@ public class TvShowData implements ITvShowData {
     private final ITheMovieDbConstants tmdbConstants;
     private final Type tvShowModelType;
     private final Type popularTvShowsType;
+    private final Type detailedTvShowModelType;
 
     @Inject
-    public TvShowData(IOkHttpRequester okHttpRequester, IJsonParser jsonParser, Type tvShowModelType, Type popularTvShowsType, ITheMovieDbConstants tmdbConstants) {
+    public TvShowData(IOkHttpRequester okHttpRequester, IJsonParser jsonParser, Type tvShowModelType, Type popularTvShowsType, Type detailedTvShowType, ITheMovieDbConstants tmdbConstants) {
         this.okHttpRequester = okHttpRequester;
         this.jsonParser = jsonParser;
         this.tvShowModelType = tvShowModelType;
         this.popularTvShowsType = popularTvShowsType;
+        this.detailedTvShowModelType  = detailedTvShowType;
         this.tmdbConstants = tmdbConstants;
     }
 
@@ -43,6 +48,20 @@ public class TvShowData implements ITvShowData {
                         IPopularTvShowsModel tvShows = jsonParser.fromJson(respBody.string(), popularTvShowsType);
 
                         return tvShows;
+                    }
+                });
+    }
+
+    @Override
+    public Observable<IDetailedTvShowModel> getTvShow(int id) {
+        return okHttpRequester.get(tmdbConstants.getTvDetailsUrl(id))
+                .map(new Function<IOkHttpResponse, IDetailedTvShowModel>() {
+                    @Override
+                    public IDetailedTvShowModel apply(IOkHttpResponse okHttpResponse) throws Exception {
+                        ResponseBody respBody = okHttpResponse.getBody();
+                        IDetailedTvShowModel tvShow = jsonParser.fromJson(respBody.string(), detailedTvShowModelType);
+                        return tvShow;
+
                     }
                 });
     }
