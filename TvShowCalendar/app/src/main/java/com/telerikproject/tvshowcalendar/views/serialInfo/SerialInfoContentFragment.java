@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.TextViewCompat;
+import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,6 +58,7 @@ public class SerialInfoContentFragment extends Fragment implements ISerialInfoCo
     @Override
     public void fillInfo(String image, String tvRating, String tvDescription) {
         this.tvDescription.setText(tvDescription);
+        this.tvDescription.setMovementMethod(LinkMovementMethod.getInstance());
         this.tvRating.setText(tvRating);
         Glide.with(getActivity()).load(image).into(movieImage);
     }
