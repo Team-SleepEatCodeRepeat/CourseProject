@@ -10,6 +10,7 @@
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
         app:title="Season 1" />
+    <!--TODO put toolbar with back button-->
 
     <LinearLayout
         android:id="@+id/wrapper"
