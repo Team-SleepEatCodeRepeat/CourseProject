@@ -13,4 +13,5 @@
     <color name="guillotine_background_dark">#e0e0e0</color>
     <color name="black">#0a0a0a</color>
     <color name="background_image">#424242</color>
+    <color name="common_border_color">#b2b2b2</color>
 </resources>

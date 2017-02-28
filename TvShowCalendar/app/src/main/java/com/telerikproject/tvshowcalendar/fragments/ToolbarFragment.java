@@ -10,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.mikepenz.fontawesome_typeface_library.FontAwesome;
 import com.mikepenz.materialdrawer.Drawer;
@@ -97,8 +98,9 @@ public class ToolbarFragment extends Fragment {
                                 startActivity(profile);
                                 break;
                             case 3:
-                                Intent info = new Intent(getActivity(), SerialInfoActivity.class);
-                                startActivity(info);
+                                Toast.makeText(getActivity(), "Options", Toast.LENGTH_LONG).show();
+//                                Intent options = new Intent(getActivity(), OptionsActivity.class);
+//                                startActivity(options);
                                 break;
                             case 4:
                                 Intent login = new Intent(getActivity(), LoginActivity.class);
