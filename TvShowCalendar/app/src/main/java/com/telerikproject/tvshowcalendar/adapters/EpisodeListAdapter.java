@@ -13,10 +13,6 @@ import com.telerikproject.tvshowcalendar.R;
 
 import java.util.ArrayList;
 
-/**
- * Created by Hope on 01-Mar-17.
- */
-
 public class EpisodeListAdapter extends BaseAdapter {
 
     ArrayList<String> titles;
@@ -28,12 +24,12 @@ public class EpisodeListAdapter extends BaseAdapter {
 
     private static LayoutInflater inflater = null;
 
-    public EpisodeListAdapter(Activity choosenActivity, ArrayList<String> episodesTitle, ArrayList<String> episodesNum, ArrayList<String> episodesDateRelease,ArrayList<String> episodeYearsRelease )
-    {
+    public EpisodeListAdapter(Activity choosenActivity, ArrayList<String> episodesTitle, ArrayList<String> episodesNum, ArrayList<String> episodesDateRelease, ArrayList<String> episodeYearsRelease) {
         titles = episodesTitle;
         episodeNumbers = episodesNum;
         datesRelease = episodesDateRelease;
         yearsRelease = episodeYearsRelease;
+        context = choosenActivity;
 
         inflater = (LayoutInflater) context.
                 getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -57,7 +53,7 @@ public class EpisodeListAdapter extends BaseAdapter {
         TextView episodeNumber;
         TextView titles;
         TextView datesRelease;
-       TextView yearsRelease;
+        TextView yearsRelease;
     }
 
     @Override
@@ -83,7 +79,7 @@ public class EpisodeListAdapter extends BaseAdapter {
             @Override
 
             public void onClick(View v) {
-                Toast.makeText(context , "Clicked" , Toast.LENGTH_LONG);
+                Toast.makeText(context, "Clicked Episode List Adapter", Toast.LENGTH_LONG);
             }
         });
 
