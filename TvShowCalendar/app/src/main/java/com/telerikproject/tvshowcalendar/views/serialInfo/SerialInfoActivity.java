@@ -29,7 +29,7 @@ public class SerialInfoActivity extends AppCompatActivity {
     @Inject
     ISerialInfoContract.Presenter contentPresenter;
 
-    private int id;
+    private String id;
     private ILoadingFragment loading;
 
     @Inject
@@ -51,7 +51,7 @@ public class SerialInfoActivity extends AppCompatActivity {
 
         contentPresenter.setView(content);
         content.setPresenter(contentPresenter);
-        this.id = getIntent().getIntExtra("id", 0);
+        this.id = getIntent().getStringExtra("id");
         this.loading = loadingFragment.create(this);
 
 

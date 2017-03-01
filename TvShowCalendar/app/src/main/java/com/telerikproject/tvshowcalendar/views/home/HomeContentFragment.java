@@ -19,6 +19,8 @@ import com.telerikproject.tvshowcalendar.network.base.ITvShowData;
 import com.telerikproject.tvshowcalendar.views.home.base.IHomeContract;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+
 import javax.inject.Inject;
 
 import io.reactivex.Observer;
@@ -37,18 +39,12 @@ public class HomeContentFragment extends Fragment implements IHomeContract.View 
     @Inject
     public Activity mActivity;
 
-    @Inject
-    ITvShowData tvShowData;
 
-
-   public ArrayList<String> moviesImages;
-// = {R.drawable.the_originals, R.drawable.game_of_thrones,
-//            R.drawable.mr_robot, R.drawable.the_big_bang_theory,
-//            R.drawable.the_vampire_diaries, R.drawable.un_barco_en_el_espejo};
+    public ArrayList<String> moviesImages;
 
     public ArrayList<String> moviesTitles;
     public ArrayList<String> moviesRating;
-    public ArrayList<Integer> moviesIds;
+    public ArrayList<String> moviesIds;
     GridView gridView;
 
 
@@ -65,18 +61,10 @@ public class HomeContentFragment extends Fragment implements IHomeContract.View 
         injectDependencies();
         BaseApplication.bind(this, view);
 
-        this.moviesImages = new ArrayList<>();
-        this.moviesTitles = new ArrayList<>();
-        this.moviesRating = new ArrayList<>();
-        this.moviesIds = new ArrayList<>();
 
         ILoadingFragment loading = loadingFragment.create(mActivity);
 
-        getTopTvShows(loading);
-
-
         gridView = (GridView) view.findViewById(R.id.gv_top_10);
-//        gridView.setAdapter(new GridAdapter(mActivity, moviesTitles, moviesRating, moviesImages));
 
         return view;
     }
@@ -97,43 +85,13 @@ public class HomeContentFragment extends Fragment implements IHomeContract.View 
                 .inject(this);
     }
 
-    private void getTopTvShows(final ILoadingFragment loading) {
-        tvShowData.getTopTvShows()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<IPopularTvShowsModel>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
+    @Override
+    public void fillInfo(ArrayList<String> titles, ArrayList<String> images, ArrayList<String> ids, ArrayList<String> ratings) {
+        this.moviesIds = ids;
+        this.moviesRating = ratings;
+        this.moviesTitles = titles;
+        this.moviesImages = images;
 
-                        loading.show();
-                    }
-
-                    @Override
-                    public void onNext(IPopularTvShowsModel value) {
-
-                        ArrayList<TvShowModel> tvShows = value.getResults();
-
-                        for(TvShowModel tvShow: tvShows) {
-                            String poster = "https://image.tmdb.org/t/p/w640" + tvShow.getPoster();
-                            String name = tvShow.getName();
-                            double vote = (double) Math.round(tvShow.getVote() * 10) / 10;
-                            int id = tvShow.getId();
-                            moviesImages.add(poster);
-                            moviesTitles.add(name);
-                            moviesRating.add(vote + " / 10");
-                            moviesIds.add(id);
-                        }
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                    }
-
-                    @Override
-                    public void onComplete() {
-                        gridView.setAdapter(new GridAdapter(mActivity, moviesTitles, moviesRating, moviesImages, moviesIds));
-                        loading.hide();
-                    }
-                });
+        gridView.setAdapter(new GridAdapter(mActivity, moviesTitles, moviesRating, moviesImages, moviesIds));
     }
 }

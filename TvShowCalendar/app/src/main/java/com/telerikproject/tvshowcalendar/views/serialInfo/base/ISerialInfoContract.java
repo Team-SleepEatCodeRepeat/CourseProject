@@ -11,6 +11,6 @@ public interface ISerialInfoContract {
 
     interface Presenter extends BasePresenter<ISerialInfoContract.View> {
 
-        void getSerial(int id, ILoadingFragment loading);
+        void getSerial(String id, ILoadingFragment loading);
     }
 }

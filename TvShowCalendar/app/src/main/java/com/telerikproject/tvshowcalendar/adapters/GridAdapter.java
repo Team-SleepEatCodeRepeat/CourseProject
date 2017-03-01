@@ -23,13 +23,13 @@ public class GridAdapter extends BaseAdapter {
     ArrayList<String> ratings;
     Context context;
     ArrayList<String> images;
-    ArrayList<Integer> ids;
+    ArrayList<String> ids;
 
 
 
     private static LayoutInflater inflater = null;
 
-    public GridAdapter(Activity choosenActivity, ArrayList<String> moviesTitles, ArrayList<String> moviesRating, ArrayList<String> moviesImages, ArrayList<Integer> ids) {
+    public GridAdapter(Activity choosenActivity, ArrayList<String> moviesTitles, ArrayList<String> moviesRating, ArrayList<String> moviesImages, ArrayList<String> ids) {
         titles = moviesTitles;
         ratings = moviesRating;
         context = choosenActivity;
@@ -59,7 +59,6 @@ public class GridAdapter extends BaseAdapter {
         TextView titles;
         TextView ratings;
         ImageView images;
-        int ids;
     }
 
     @Override
@@ -79,9 +78,9 @@ public class GridAdapter extends BaseAdapter {
         rowView.setOnClickListener(new View.OnClickListener() {
 
             @Override
-
             public void onClick(View v) {
                 Intent intent = new Intent(context, SerialInfoActivity.class);
+                String id = ids.get(position);
                 intent.putExtra("id", ids.get(position));
                 context.startActivity(intent);
             }
