@@ -21,6 +21,7 @@ import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.telerikproject.tvshowcalendar.R;
 import com.telerikproject.tvshowcalendar.activities.LoginActivity;
+import com.telerikproject.tvshowcalendar.activities.SearchActivity;
 import com.telerikproject.tvshowcalendar.views.serialInfo.SerialInfoActivity;
 import com.telerikproject.tvshowcalendar.views.home.HomeActivity;
 import com.telerikproject.tvshowcalendar.activities.ProfileActivity;
@@ -65,18 +66,13 @@ public class ToolbarFragment extends Fragment {
                 .withName("Profile")
                 .withIcon(FontAwesome.Icon.faw_user);
 
-        SecondaryDrawerItem search = new SecondaryDrawerItem()
-                .withIdentifier(3)
-                .withName("Search")
-                .withIcon(FontAwesome.Icon.faw_search);
-
         SecondaryDrawerItem options = new SecondaryDrawerItem()
-                .withIdentifier(4)
+                .withIdentifier(3)
                 .withName("Options")
                 .withIcon(FontAwesome.Icon.faw_cogs);
 
         SecondaryDrawerItem login = new SecondaryDrawerItem()
-                .withIdentifier(5)
+                .withIdentifier(4)
                 .withName("Sign In")
                 .withIcon(FontAwesome.Icon.faw_sign_in);
 
@@ -87,7 +83,6 @@ public class ToolbarFragment extends Fragment {
                         home,
                         new DividerDrawerItem(),
                         profile,
-                        search,
                         options,
                         login
                 )
@@ -104,16 +99,11 @@ public class ToolbarFragment extends Fragment {
                                 startActivity(profile);
                                 break;
                             case 3:
-                                Toast.makeText(getActivity(), "Search", Toast.LENGTH_LONG).show();
-//                                Intent activity = new Intent(getActivity(), SearchActivity.class);
-//                                startActivity(activity);
-                                break;
-                            case 4:
                                 Toast.makeText(getActivity(), "Options", Toast.LENGTH_LONG).show();
 //                                Intent options = new Intent(getActivity(), OptionsActivity.class);
 //                                startActivity(options);
                                 break;
-                            case 5:
+                            case 4:
                                 Intent login = new Intent(getActivity(), LoginActivity.class);
                                 startActivity(login);
                                 break;
