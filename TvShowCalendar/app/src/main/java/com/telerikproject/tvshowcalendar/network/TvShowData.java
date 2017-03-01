@@ -53,7 +53,7 @@ public class TvShowData implements ITvShowData {
     }
 
     @Override
-    public Observable<IDetailedTvShowModel> getTvShow(int id) {
+    public Observable<IDetailedTvShowModel> getTvShow(String id) {
         return okHttpRequester.get(tmdbConstants.getTvDetailsUrl(id))
                 .map(new Function<IOkHttpResponse, IDetailedTvShowModel>() {
                     @Override

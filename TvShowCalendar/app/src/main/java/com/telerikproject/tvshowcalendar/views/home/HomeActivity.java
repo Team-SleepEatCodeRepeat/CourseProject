@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.telerikproject.tvshowcalendar.BaseApplication;
 import com.telerikproject.tvshowcalendar.R;
+import com.telerikproject.tvshowcalendar.fragments.ILoadingFragment;
 import com.telerikproject.tvshowcalendar.modules.ControllerModule;
 import com.telerikproject.tvshowcalendar.views.home.base.IHomeContract;
 
@@ -17,6 +18,11 @@ public class HomeActivity extends AppCompatActivity {
 
     @Inject
     FragmentManager fragmentManager;
+
+    @Inject
+    ILoadingFragment loadingFragment;
+
+    ILoadingFragment loading;
 
     private HomeContentFragment content;
 
@@ -31,6 +37,13 @@ public class HomeActivity extends AppCompatActivity {
         contentPresenter.setView(content);
         content.setPresenter(contentPresenter);
 
+        this.loading = this.loadingFragment.create(this);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        this.contentPresenter.getTopTvShows(this.loading);
     }
 
     private void injectDependencies() {

@@ -42,9 +42,10 @@ public class ControllerModule {
         return this.fragmentManager;
     }
 
+    @Inject
     @Provides
-    IHomeContract.Presenter provideHomeContentPresenter() {
-        return new HomeContentPresenter();
+    IHomeContract.Presenter provideHomeContentPresenter(ITvShowData tvShowData) {
+        return new HomeContentPresenter(tvShowData);
     }
 
     @Inject

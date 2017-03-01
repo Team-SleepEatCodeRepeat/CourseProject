@@ -11,5 +11,5 @@ import io.reactivex.Observable;
 public interface ITvShowData {
     Observable<IPopularTvShowsModel> getTopTvShows();
 
-    Observable<IDetailedTvShowModel> getTvShow(int id);
+    Observable<IDetailedTvShowModel> getTvShow(String id);
 }

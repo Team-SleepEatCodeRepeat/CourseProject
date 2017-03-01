@@ -5,9 +5,9 @@ public interface ITheMovieDbConstants {
 
     String getSearchTvShowUrl(String searchString);
 
-    String getTvDetailsUrl(int id);
+    String getTvDetailsUrl(String id);
 
-    String getSeasonDetailsUrl(int id, int seasonNumber);
+    String getSeasonDetailsUrl(String id, int seasonNumber);
 
-    String getEpisodeDetailsUrl(int id, int seasonNumber, int episodeNumber);
+    String getEpisodeDetailsUrl(String id, int seasonNumber, int episodeNumber);
 }

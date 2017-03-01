@@ -36,7 +36,7 @@ public class SerialInfoContentPresenter implements ISerialInfoContract.Presenter
     }
 
     @Override
-    public void getSerial(int id, final ILoadingFragment loading) {
+    public void getSerial(String id, final ILoadingFragment loading) {
         tvShowData.getTvShow(id)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
