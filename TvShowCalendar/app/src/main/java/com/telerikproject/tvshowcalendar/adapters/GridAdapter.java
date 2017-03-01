@@ -25,8 +25,6 @@ public class GridAdapter extends BaseAdapter {
     ArrayList<String> images;
     ArrayList<Integer> ids;
 
-
-
     private static LayoutInflater inflater = null;
 
     public GridAdapter(Activity choosenActivity, ArrayList<String> moviesTitles, ArrayList<String> moviesRating, ArrayList<String> moviesImages, ArrayList<Integer> ids) {
