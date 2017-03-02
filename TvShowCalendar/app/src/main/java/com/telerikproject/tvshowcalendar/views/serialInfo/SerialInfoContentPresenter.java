@@ -52,8 +52,9 @@ public class SerialInfoContentPresenter implements ISerialInfoContract.Presenter
                         String description = value.getOverview();
                         String image = String.format("%s%s", "https://image.tmdb.org/t/p/w640", value.getBackdropPath());
                         String rating = String.valueOf(value.getVoteAverage());
+                        int numOfSeasons = value.getNumberOfSeasons();
 
-                        view.fillInfo(image, rating, description);
+                        view.fillInfo(image, rating, description, numOfSeasons);
                     }
 
                     @Override

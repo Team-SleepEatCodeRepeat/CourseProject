@@ -10,12 +10,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.telerikproject.tvshowcalendar.R;
+import com.telerikproject.tvshowcalendar.adapters.SeasonsListAdapter;
 import com.telerikproject.tvshowcalendar.fragments.ILoadingFragment;
 import com.telerikproject.tvshowcalendar.views.serialInfo.base.ISerialInfoContract;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -30,6 +34,9 @@ public class SerialInfoContentFragment extends Fragment implements ISerialInfoCo
     TextView tvRating;
     ImageView movieImage;
     TextView tvDescription;
+
+    ListView seasons;
+
 
     public SerialInfoContentFragment() {
 
@@ -47,6 +54,8 @@ public class SerialInfoContentFragment extends Fragment implements ISerialInfoCo
         this.movieImage = (ImageView) view.findViewById(R.id.movie_image);
         this.tvDescription = (TextView) view.findViewById(R.id.tv_description);
 
+        seasons = (ListView) view.findViewById(R.id.lv_seasons);
+
         return view;
     }
 
@@ -56,10 +65,11 @@ public class SerialInfoContentFragment extends Fragment implements ISerialInfoCo
     }
 
     @Override
-    public void fillInfo(String image, String tvRating, String tvDescription) {
+    public void fillInfo(String image, String tvRating, String tvDescription, int numOfSeasons) {
         this.tvDescription.setText(tvDescription);
         this.tvDescription.setMovementMethod(LinkMovementMethod.getInstance());
         this.tvRating.setText(tvRating);
         Glide.with(getActivity()).load(image).into(movieImage);
+        seasons.setAdapter(new SeasonsListAdapter(getActivity(), numOfSeasons));
     }
 }

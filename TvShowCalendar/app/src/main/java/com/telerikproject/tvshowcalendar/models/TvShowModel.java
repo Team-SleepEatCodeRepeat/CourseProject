@@ -4,9 +4,6 @@ import com.telerikproject.tvshowcalendar.models.base.ITvShowModel;
 
 import java.util.ArrayList;
 
-/**
- * Created by todor on 2/24/17.
- */
 
 public class TvShowModel implements ITvShowModel {
     private String poster_path;

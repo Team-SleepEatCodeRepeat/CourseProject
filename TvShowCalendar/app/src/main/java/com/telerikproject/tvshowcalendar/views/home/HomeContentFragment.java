@@ -34,11 +34,7 @@ public class HomeContentFragment extends Fragment implements IHomeContract.View 
     private IHomeContract.Presenter presenter;
 
     @Inject
-    ILoadingFragment loadingFragment;
-
-    @Inject
     public Activity mActivity;
-
 
     public ArrayList<String> moviesImages;
 
@@ -62,11 +58,10 @@ public class HomeContentFragment extends Fragment implements IHomeContract.View 
         BaseApplication.bind(this, view);
 
 
-        ILoadingFragment loading = loadingFragment.create(mActivity);
-
         gridView = (GridView) view.findViewById(R.id.gv_top_10);
 
         return view;
+
     }
 
 
