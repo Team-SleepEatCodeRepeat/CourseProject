@@ -99,31 +99,37 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginBottom="5dp"
             android:text="Description:"
-            android:textSize="18sp"
+            android:textAlignment="center"
+            android:textSize="22sp"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tv_description"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:maxLines="6"
             android:minLines="1"
             android:scrollbars="vertical"
+            android:textAlignment="center"
             android:textSize="18sp" />
 
-        <ExpandableListView
+        <TextView
+            android:id="@+id/seasons"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Seasons: "
+            android:textAlignment="center"
+            android:textSize="22sp"
+            android:textStyle="bold" />
 
         <ListView
             android:id="@+id/lv_seasons"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-
     </LinearLayout>
-
-
 </RelativeLayout>
