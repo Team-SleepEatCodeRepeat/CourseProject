@@ -15,8 +15,7 @@
         android:layout_height="200dp"
         android:layout_marginTop="2dp"
         android:layout_marginBottom="2dp"
-        android:background="@color/background_image"
-        android:src="@drawable/the_vampire_diaries"/>
+        android:background="@color/background_image"/>
 
     <ImageView
         android:layout_width="30dp"
