@@ -2,6 +2,9 @@ package com.telerikproject.tvshowcalendar;
 
 
 import com.telerikproject.tvshowcalendar.network.base.ITvShowData;
+import com.telerikproject.tvshowcalendar.views.episodes.EpisodesActivity;
+import com.telerikproject.tvshowcalendar.views.episodes.EpisodesFragment;
+import com.telerikproject.tvshowcalendar.views.episodes.EpisodesPresenter;
 import com.telerikproject.tvshowcalendar.views.home.HomeActivity;
 import com.telerikproject.tvshowcalendar.modules.ControllerModule;
 import com.telerikproject.tvshowcalendar.views.home.HomeContentFragment;
@@ -27,4 +30,10 @@ public interface ControllerComponent {
     void inject(SerialInfoContentPresenter serialInfoContentPresenter);
 
     void inject(HomeContentPresenter homeContentPresenter);
+
+    void inject(EpisodesFragment episodesFragment);
+
+    void inject(EpisodesActivity episodesActivity);
+
+    void inject(EpisodesPresenter episodesPresenter);
 }

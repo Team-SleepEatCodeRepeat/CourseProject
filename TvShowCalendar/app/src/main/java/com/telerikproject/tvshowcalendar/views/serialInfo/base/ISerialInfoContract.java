@@ -4,9 +4,11 @@ import com.telerikproject.tvshowcalendar.fragments.ILoadingFragment;
 import com.telerikproject.tvshowcalendar.views.base.BasePresenter;
 import com.telerikproject.tvshowcalendar.views.base.BaseView;
 
+import java.util.ArrayList;
+
 public interface ISerialInfoContract {
     interface View extends BaseView<ISerialInfoContract.Presenter> {
-        void fillInfo(String tvRating, String image, String description, int numOfSeasons);
+        void fillInfo(String tvRating, String image, String description, int numOfSeasons, String tvShowId);
     }
 
     interface Presenter extends BasePresenter<ISerialInfoContract.View> {

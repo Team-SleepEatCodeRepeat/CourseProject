@@ -1,10 +1,15 @@
 package com.telerikproject.tvshowcalendar.views.serialInfo;
 
 import com.telerikproject.tvshowcalendar.fragments.ILoadingFragment;
+import com.telerikproject.tvshowcalendar.models.DetailedTvShowModel;
+import com.telerikproject.tvshowcalendar.models.DetailedTvShowSeasonModel;
 import com.telerikproject.tvshowcalendar.models.base.IDetailedTvShowModel;
 import com.telerikproject.tvshowcalendar.models.base.ITvShowModel;
+import com.telerikproject.tvshowcalendar.models.base.ITvShowSeasonModel;
 import com.telerikproject.tvshowcalendar.network.base.ITvShowData;
 import com.telerikproject.tvshowcalendar.views.serialInfo.base.ISerialInfoContract;
+
+import java.util.ArrayList;
 
 import javax.inject.Inject;
 
@@ -36,7 +41,7 @@ public class SerialInfoContentPresenter implements ISerialInfoContract.Presenter
     }
 
     @Override
-    public void getSerial(String id, final ILoadingFragment loading) {
+    public void getSerial(final String id, final ILoadingFragment loading) {
         tvShowData.getTvShow(id)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -54,7 +59,9 @@ public class SerialInfoContentPresenter implements ISerialInfoContract.Presenter
                         String rating = String.valueOf(value.getVoteAverage());
                         int numOfSeasons = value.getNumberOfSeasons();
 
-                        view.fillInfo(image, rating, description, numOfSeasons);
+
+
+                        view.fillInfo(image, rating, description, numOfSeasons, id);
                     }
 
                     @Override

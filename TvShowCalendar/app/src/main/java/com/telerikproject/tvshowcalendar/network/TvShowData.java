@@ -6,6 +6,7 @@ import com.telerikproject.tvshowcalendar.models.base.IDetailedTvShowModel;
 import com.telerikproject.tvshowcalendar.models.base.IDetailedTvShowSeasonModel;
 import com.telerikproject.tvshowcalendar.models.base.IPopularTvShowsModel;
 import com.telerikproject.tvshowcalendar.models.base.ITvShowModel;
+import com.telerikproject.tvshowcalendar.models.base.ITvShowSeasonModel;
 import com.telerikproject.tvshowcalendar.network.base.ITvShowData;
 import com.telerikproject.tvshowcalendar.utils.base.IJsonParser;
 import com.telerikproject.tvshowcalendar.utils.base.IOkHttpRequester;
@@ -27,14 +28,17 @@ public class TvShowData implements ITvShowData {
     private final Type tvShowModelType;
     private final Type popularTvShowsType;
     private final Type detailedTvShowModelType;
+    private final Type tvShowSeasonModelType;
 
     @Inject
-    public TvShowData(IOkHttpRequester okHttpRequester, IJsonParser jsonParser, Type tvShowModelType, Type popularTvShowsType, Type detailedTvShowType, ITheMovieDbConstants tmdbConstants) {
+    public TvShowData(IOkHttpRequester okHttpRequester, IJsonParser jsonParser, Type tvShowModelType, Type popularTvShowsType,
+                      Type detailedTvShowType, Type tvShowSeasonModelType, ITheMovieDbConstants tmdbConstants) {
         this.okHttpRequester = okHttpRequester;
         this.jsonParser = jsonParser;
         this.tvShowModelType = tvShowModelType;
         this.popularTvShowsType = popularTvShowsType;
         this.detailedTvShowModelType  = detailedTvShowType;
+        this.tvShowSeasonModelType = tvShowSeasonModelType;
         this.tmdbConstants = tmdbConstants;
     }
 
@@ -62,6 +66,20 @@ public class TvShowData implements ITvShowData {
                         IDetailedTvShowModel tvShow = jsonParser.fromJson(respBody.string(), detailedTvShowModelType);
                         return tvShow;
 
+                    }
+                });
+    }
+
+    @Override
+    public Observable<ITvShowSeasonModel> getTvShowSeasonEpisodes(final String seasonNumber, final String tvShowId) {
+        return okHttpRequester.get(tmdbConstants.getSeasonDetailsUrl(tvShowId, Integer.valueOf(seasonNumber)))
+                .map(new Function<IOkHttpResponse, ITvShowSeasonModel>() {
+                    @Override
+                    public ITvShowSeasonModel apply(IOkHttpResponse okHttpResponse) throws Exception {
+                        ResponseBody respBody = okHttpResponse.getBody();
+                        ITvShowSeasonModel season = jsonParser.fromJson(respBody.string(), tvShowSeasonModelType);
+
+                        return season;
                     }
                 });
     }

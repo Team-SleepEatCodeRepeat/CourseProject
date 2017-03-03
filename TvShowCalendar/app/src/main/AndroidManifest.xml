@@ -37,8 +37,12 @@
             android:label="Profile" />
         <activity
             android:name=".views.serialInfo.SerialInfoActivity"
-            android:label="Serial Info"></activity>
-        <activity android:name=".activities.SearchActivity"></activity>
+            android:label="Serial Info" />
+        <activity android:name=".activities.SearchActivity" />
+        <activity
+            android:name=".views.episodes.EpisodesActivity"
+            android:label="@string/title_activity_episodes"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

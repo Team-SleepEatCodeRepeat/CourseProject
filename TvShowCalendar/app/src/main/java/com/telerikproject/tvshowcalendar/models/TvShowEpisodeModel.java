@@ -12,7 +12,7 @@ public class TvShowEpisodeModel implements ITvShowEpisodeModel {
 
     private int episode_number;
 
-    private ArrayList<String> guest_stars;
+    private ArrayList<GuestStarModel> guest_stars;
 
     private String name;
 
@@ -26,15 +26,15 @@ public class TvShowEpisodeModel implements ITvShowEpisodeModel {
 
     private double vote_average;
 
-    private double vote_count;
+    private int vote_count;
 
     public TvShowEpisodeModel() {
 
     }
 
     public TvShowEpisodeModel(String air_date, ArrayList<CrewMemberModel> crew, int episode_number,
-                              ArrayList<String> guest_stars, String name, String overview, int id,
-                              String production_code, String still_path, double vote_average, double vote_count) {
+                              ArrayList<GuestStarModel> guest_stars, String name, String overview, int id,
+                              String production_code, String still_path, double vote_average, int vote_count) {
         this.air_date = air_date;
         this.crew = crew;
         this.episode_number = episode_number;
@@ -64,7 +64,7 @@ public class TvShowEpisodeModel implements ITvShowEpisodeModel {
     }
 
     @Override
-    public ArrayList<String> getGuestStars() {
+    public ArrayList<GuestStarModel> getGuestStars() {
         return guest_stars;
     }
 
@@ -99,7 +99,7 @@ public class TvShowEpisodeModel implements ITvShowEpisodeModel {
     }
 
     @Override
-    public double getVoteCount() {
+    public int getVoteCount() {
         return vote_count;
     }
 }

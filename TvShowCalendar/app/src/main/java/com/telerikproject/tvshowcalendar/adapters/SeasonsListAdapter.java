@@ -2,6 +2,7 @@ package com.telerikproject.tvshowcalendar.adapters;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,25 +11,28 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.telerikproject.tvshowcalendar.R;
+import com.telerikproject.tvshowcalendar.views.episodes.EpisodesActivity;
 
 import java.util.ArrayList;
 
 public class SeasonsListAdapter extends BaseAdapter {
 
     private final Activity mActivity;
-    private final int numOfSeasons;
 
     ArrayList<Integer> seasons;
+    private final String tvShowId;
 
     private LayoutInflater inflater = null;
 
-    public SeasonsListAdapter(Activity activity, int numOfseasons) {
+    public SeasonsListAdapter(Activity activity, int numOfSeasons, String tvShowId) {
         this.mActivity = activity;
-        this. numOfSeasons = numOfseasons;
+        this.tvShowId = tvShowId;
+
         this.seasons = new ArrayList<>();
+
         inflater = (LayoutInflater) mActivity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        fillSeasons(numOfseasons);
+        fillSeasons(numOfSeasons);
     }
 
     @Override
@@ -66,7 +70,12 @@ public class SeasonsListAdapter extends BaseAdapter {
         rowView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(mActivity, "you clicked " + seasons.get(position), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(mActivity, EpisodesActivity.class);
+                String seasonNumber = String.valueOf(position + 1);
+                intent.putExtra("seasonNumber", seasonNumber);
+                intent.putExtra("tvShowId", tvShowId);
+
+                mActivity.startActivity(intent);
             }
         });
 

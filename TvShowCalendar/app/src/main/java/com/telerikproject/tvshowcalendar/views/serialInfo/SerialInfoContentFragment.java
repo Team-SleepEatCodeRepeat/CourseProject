@@ -19,6 +19,7 @@ import com.telerikproject.tvshowcalendar.adapters.SeasonsListAdapter;
 import com.telerikproject.tvshowcalendar.fragments.ILoadingFragment;
 import com.telerikproject.tvshowcalendar.views.serialInfo.base.ISerialInfoContract;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -65,11 +66,12 @@ public class SerialInfoContentFragment extends Fragment implements ISerialInfoCo
     }
 
     @Override
-    public void fillInfo(String image, String tvRating, String tvDescription, int numOfSeasons) {
+    public void fillInfo(String image, String tvRating, String tvDescription, int numOfSeasons, String tvShowId) {
         this.tvDescription.setText(tvDescription);
         this.tvDescription.setMovementMethod(LinkMovementMethod.getInstance());
         this.tvRating.setText(tvRating);
         Glide.with(getActivity()).load(image).into(movieImage);
-        seasons.setAdapter(new SeasonsListAdapter(getActivity(), numOfSeasons));
+
+        seasons.setAdapter(new SeasonsListAdapter(getActivity(), numOfSeasons, tvShowId));
     }
 }

@@ -27,7 +27,7 @@ public final class TheMovieDbConstants implements ITheMovieDbConstants {
 
     @Override
     public String getSeasonDetailsUrl(String id, int seasonNumber) {
-        return String.format("%s%s/season/%s", tvShowsBaseUrl, id, seasonNumber);
+        return String.format("%s/%s/season/%s%s", tvShowsBaseUrl, id, seasonNumber, tMDBApiKey);
     }
 
     @Override
