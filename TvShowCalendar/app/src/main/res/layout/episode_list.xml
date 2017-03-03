@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        app:title="Season 1" />
-    <!--TODO put toolbar with back button-->
 
     <LinearLayout
         android:id="@+id/wrapper"
@@ -24,14 +15,13 @@
             android:id="@+id/tv_episode_number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:layout_marginBottom="15dp"
             android:layout_marginEnd="10dp"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_marginTop="15dp"
             android:background="@drawable/rounded_corner"
-            android:paddingEnd="5dp"
-            android:paddingStart="5dp"
-            android:text="01"
+            android:paddingEnd="15dp"
+            android:paddingStart="15dp"
             android:textSize="30sp" />
 
         <TextView
@@ -42,7 +32,6 @@
             android:maxLines="1"
             android:minLines="1"
             android:maxLength="23"
-            android:text="Always and Forever Always and Forever"
             android:textSize="20sp" />
 
     </LinearLayout>
@@ -60,14 +49,12 @@
             android:id="@+id/tv_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="3 Oct."
             android:textSize="18sp"/>
 
         <TextView
             android:id="@+id/tv_date_year"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="2013"
             android:textSize="18sp"/>
     </LinearLayout>
 </RelativeLayout>

@@ -54,40 +54,25 @@ public class SerialInfoActivity extends AppCompatActivity {
         this.id = getIntent().getStringExtra("id");
         this.loading = loadingFragment.create(this);
 
+        Toolbar toolbar = (Toolbar) this.findViewById(R.id.toolbar);
+        this.setSupportActionBar(toolbar);
 
-//        contentPresenter.getSerial(id, loading);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-//        Toolbar toolbar = (Toolbar) this.findViewById(R.id.toolbar);
-//        this.setSupportActionBar(toolbar);
-//
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//        getSupportActionBar().setDisplayShowHomeEnabled(true);
-//
-//        TextView description = (TextView) this.findViewById(R.id.tv_description);
-//        description.setMovementMethod(new ScrollingMovementMethod());
-
-        //examples
-//        String serialName = "The Originals";
-//        ImageView image = (ImageView) this.findViewById(R.id.serial_image);
-//        String uri = "@drawable/the_originals";
-//        int imageResource = getResources().getIdentifier(uri, null, getPackageName());
-
-//        toolbar.setTitle(serialName);
-//        Drawable res = getResources().getDrawable(imageResource);
-//        image.setImageDrawable(res);
-        //end examples
+        getSupportActionBar().setTitle("Serial title must be here");
     }
 
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        switch (item.getItemId()) {
-//        case android.R.id.home:
-//            onBackPressed();
-//            break;
-//        }
-//
-//        return super.onOptionsItemSelected(item);
-//    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+        case android.R.id.home:
+            onBackPressed();
+            break;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 
 
     @Override

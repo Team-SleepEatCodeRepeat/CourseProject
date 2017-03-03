@@ -8,10 +8,10 @@
     tools:context="com.telerikproject.tvshowcalendar.views.episodes.EpisodesActivity">
 
     <fragment
-        android:id="@+id/fragment"
-        android:name="com.telerikproject.tvshowcalendar.fragments.ToolbarFragment"
+        android:id="@+id/back_toolbar"
+        android:name="com.telerikproject.tvshowcalendar.fragments.BackToolbarFragment"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"/>
 
     <fragment
         android:id="@+id/fragment_episodes"
