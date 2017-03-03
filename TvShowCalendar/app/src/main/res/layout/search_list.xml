@@ -2,18 +2,21 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
     android:background="#e5e5e5">
     <!--TODO This must be fragment-->
 
     <ImageView
         android:id="@+id/iv_serial_image"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"/>
+        android:layout_marginEnd="5dp"
+        android:src="@drawable/picture"
+        android:background="@drawable/rounded_corner"/>
 
     <TextView
         android:id="@+id/tv_serial_title"
@@ -22,7 +25,21 @@
         android:layout_gravity="center"
         android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp"
-        android:text="The Originals"
-        android:textSize="30sp"/>
+        android:maxLines="1"
+        android:maxLength="18"
+        android:text="The Originals Originals"
+        android:textSize="25sp"/>
+
+    <com.sackcentury.shinebuttonlib.ShineButton
+        android:id="@+id/shine_button"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="20dp"
+        android:src="@android:color/darker_gray"
+        app:btn_color="@android:color/darker_gray"
+        app:btn_fill_color="@color/md_yellow_400"
+        app:allow_random_color="false"
+        app:siShape="@raw/star"/>
 </LinearLayout>
 
