@@ -11,22 +11,12 @@ import android.widget.GridView;
 import com.telerikproject.tvshowcalendar.BaseApplication;
 import com.telerikproject.tvshowcalendar.R;
 import com.telerikproject.tvshowcalendar.adapters.GridAdapter;
-import com.telerikproject.tvshowcalendar.fragments.ILoadingFragment;
-import com.telerikproject.tvshowcalendar.models.TvShowModel;
-import com.telerikproject.tvshowcalendar.models.base.IPopularTvShowsModel;
 import com.telerikproject.tvshowcalendar.modules.ControllerModule;
-import com.telerikproject.tvshowcalendar.network.base.ITvShowData;
 import com.telerikproject.tvshowcalendar.views.home.base.IHomeContract;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import javax.inject.Inject;
-
-import io.reactivex.Observer;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.schedulers.Schedulers;
 
 
 public class HomeContentFragment extends Fragment implements IHomeContract.View {

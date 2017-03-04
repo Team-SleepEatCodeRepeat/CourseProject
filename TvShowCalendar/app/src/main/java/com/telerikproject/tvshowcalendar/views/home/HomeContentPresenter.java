@@ -1,14 +1,12 @@
 package com.telerikproject.tvshowcalendar.views.home;
 
-import com.telerikproject.tvshowcalendar.adapters.GridAdapter;
 import com.telerikproject.tvshowcalendar.fragments.ILoadingFragment;
-import com.telerikproject.tvshowcalendar.models.TvShowModel;
-import com.telerikproject.tvshowcalendar.models.base.IPopularTvShowsModel;
-import com.telerikproject.tvshowcalendar.network.base.ITvShowData;
+import com.telerikproject.tvshowcalendar.models.popularTvShows.TvShowModel;
+import com.telerikproject.tvshowcalendar.models.popularTvShows.base.IPopularTvShowsModel;
+import com.telerikproject.tvshowcalendar.data.base.ITvShowData;
 import com.telerikproject.tvshowcalendar.views.home.base.IHomeContract;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import javax.inject.Inject;
 

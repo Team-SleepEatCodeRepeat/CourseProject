@@ -1,9 +1,9 @@
 package com.telerikproject.tvshowcalendar.views.episodes;
 
 import com.telerikproject.tvshowcalendar.fragments.ILoadingFragment;
-import com.telerikproject.tvshowcalendar.models.TvShowEpisodeModel;
-import com.telerikproject.tvshowcalendar.models.base.ITvShowSeasonModel;
-import com.telerikproject.tvshowcalendar.network.base.ITvShowData;
+import com.telerikproject.tvshowcalendar.models.episode.TvShowEpisodeModel;
+import com.telerikproject.tvshowcalendar.models.season.base.ITvShowSeasonModel;
+import com.telerikproject.tvshowcalendar.data.base.ITvShowData;
 import com.telerikproject.tvshowcalendar.views.episodes.base.IEpisodesContract;
 
 import java.util.ArrayList;

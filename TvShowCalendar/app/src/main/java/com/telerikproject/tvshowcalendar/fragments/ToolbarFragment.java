@@ -20,9 +20,7 @@ import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.telerikproject.tvshowcalendar.R;
-import com.telerikproject.tvshowcalendar.activities.LoginActivity;
-import com.telerikproject.tvshowcalendar.activities.SearchActivity;
-import com.telerikproject.tvshowcalendar.views.serialInfo.SerialInfoActivity;
+import com.telerikproject.tvshowcalendar.views.login.LoginActivity;
 import com.telerikproject.tvshowcalendar.views.home.HomeActivity;
 import com.telerikproject.tvshowcalendar.activities.ProfileActivity;
 

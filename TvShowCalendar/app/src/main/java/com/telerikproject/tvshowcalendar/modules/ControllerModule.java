@@ -4,12 +4,15 @@ import android.app.Activity;
 import android.content.Context;
 import android.support.v4.app.FragmentManager;
 
-import com.telerikproject.tvshowcalendar.models.base.ITvShowModel;
-import com.telerikproject.tvshowcalendar.network.base.ITvShowData;
+import com.telerikproject.tvshowcalendar.data.base.ITvShowData;
+import com.telerikproject.tvshowcalendar.data.base.IUserData;
+import com.telerikproject.tvshowcalendar.models.user.base.IUserModel;
 import com.telerikproject.tvshowcalendar.views.episodes.EpisodesPresenter;
 import com.telerikproject.tvshowcalendar.views.episodes.base.IEpisodesContract;
 import com.telerikproject.tvshowcalendar.views.home.HomeContentPresenter;
 import com.telerikproject.tvshowcalendar.views.home.base.IHomeContract;
+import com.telerikproject.tvshowcalendar.views.login.LoginPresenter;
+import com.telerikproject.tvshowcalendar.views.login.base.ILoginContract;
 import com.telerikproject.tvshowcalendar.views.serialInfo.SerialInfoContentPresenter;
 import com.telerikproject.tvshowcalendar.views.serialInfo.base.ISerialInfoContract;
 
@@ -61,5 +64,11 @@ public class ControllerModule {
     @Provides
     IEpisodesContract.Presenter provideEpisodesPresenter(ITvShowData tvShowData) {
         return new EpisodesPresenter(tvShowData);
+    }
+
+    @Inject
+    @Provides
+    ILoginContract.Presenter provideLoginPresenter(IUserData userData) {
+        return new LoginPresenter(userData);
     }
 }

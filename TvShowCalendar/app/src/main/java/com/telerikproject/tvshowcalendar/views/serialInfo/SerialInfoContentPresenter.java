@@ -1,15 +1,9 @@
 package com.telerikproject.tvshowcalendar.views.serialInfo;
 
 import com.telerikproject.tvshowcalendar.fragments.ILoadingFragment;
-import com.telerikproject.tvshowcalendar.models.DetailedTvShowModel;
-import com.telerikproject.tvshowcalendar.models.DetailedTvShowSeasonModel;
-import com.telerikproject.tvshowcalendar.models.base.IDetailedTvShowModel;
-import com.telerikproject.tvshowcalendar.models.base.ITvShowModel;
-import com.telerikproject.tvshowcalendar.models.base.ITvShowSeasonModel;
-import com.telerikproject.tvshowcalendar.network.base.ITvShowData;
+import com.telerikproject.tvshowcalendar.models.detailedTvShow.base.IDetailedTvShowModel;
+import com.telerikproject.tvshowcalendar.data.base.ITvShowData;
 import com.telerikproject.tvshowcalendar.views.serialInfo.base.ISerialInfoContract;
-
-import java.util.ArrayList;
 
 import javax.inject.Inject;
 

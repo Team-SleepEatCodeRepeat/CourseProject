@@ -1,27 +1,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_login"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center_horizontal"
-    android:orientation="vertical"
-    tools:context="com.telerikproject.tvshowcalendar.views.login.LoginActivity">
-
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
-        app:contentInsetStart="0dp"
-        style="@style/Toolbar"
-        android:paddingStart="@dimen/activity_horizontal_margin">
-    </android.support.v7.widget.Toolbar>
-
-    <ProgressBar
-        android:id="@+id/login_progress"
-        style="?android:attr/progressBarStyleLarge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:visibility="gone" />
+    tools:context="com.telerikproject.tvshowcalendar.views.login.LoginFragment"
+    android:orientation="vertical">
 
     <ScrollView
         android:id="@+id/login_form"
@@ -37,18 +19,17 @@
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
                 android:paddingLeft="@dimen/activity_horizontal_margin"
-                android:paddingRight="@dimen/activity_horizontal_margin">
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="16dp">
 
-                <AutoCompleteTextView
-                    android:id="@+id/email"
+                <EditText
+                    android:id="@+id/username"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/prompt_username"
                     android:inputType="textEmailAddress"
-                    android:maxLines="1"
-                    android:singleLine="true" />
+                    android:maxLines="1" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -67,20 +48,33 @@
                     android:imeActionLabel="@string/action_sign_in"
                     android:imeOptions="actionUnspecified"
                     android:inputType="textPassword"
-                    android:maxLines="1"
-                    android:singleLine="true" />
+                    android:maxLines="1" />
 
             </android.support.design.widget.TextInputLayout>
 
-
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/activity_vertical_margin"
-                android:layout_marginEnd="50dp"
-                android:layout_marginStart="50dp"
-                android:text="@string/terms_and_privacy_policy"
-                android:textAlignment="center" />
+                android:orientation="horizontal"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/no_account"
+                    android:layout_marginStart="50dp"
+                    android:paddingEnd="5dp"/>
+                <TextView
+                    android:id="@+id/sign_up"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:text="@string/sign_up"
+                    android:clickable="true"
+                    android:onClick="ClickedSignUp"/>
+            </LinearLayout>
 
             <Button
                 android:id="@+id/sign_in_button"
@@ -89,10 +83,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@color/primary"
-                android:text="@string/register"
                 android:textColor="#ffffff"
-                android:textStyle="bold" />
-
+                android:text="@string/action_sign_in"
+                android:textStyle="bold"/>
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -100,7 +93,8 @@
                 android:background="#424242"
                 android:scaleType="centerCrop"
                 android:src="@drawable/picture"
-                tools:ignore="ContentDescription" />
+                tools:ignore="ContentDescription"/>
+
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
