@@ -65,6 +65,9 @@ public class EpisodesPresenter implements IEpisodesContract.Presenter {
                             datesRelease.add(date);
                             yearsRelease.add(year);
                         }
+
+                        String title = String.format("Season %s", value.getSeasonNumber());
+                        view.setTitle(title);
                     }
 
                     @Override

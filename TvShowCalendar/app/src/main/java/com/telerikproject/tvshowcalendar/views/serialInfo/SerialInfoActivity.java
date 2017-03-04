@@ -63,7 +63,6 @@ public class SerialInfoActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         this.contentPresenter.getSerial(this.id, this.loading);
-        getSupportActionBar().setTitle("Serial title must be here");
 
         backFragment.setNavigationOnClickListener(new View.OnClickListener() {
             @Override

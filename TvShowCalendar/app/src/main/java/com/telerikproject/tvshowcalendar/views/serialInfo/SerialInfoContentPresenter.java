@@ -19,11 +19,11 @@ public class SerialInfoContentPresenter implements ISerialInfoContract.Presenter
     private final ITvShowData tvShowData;
 
     @Inject
-    public SerialInfoContentPresenter(ITvShowData tvShowData){
+    public SerialInfoContentPresenter(ITvShowData tvShowData) {
         this.tvShowData = tvShowData;
     }
 
-   @Override
+    @Override
     public void load() {
 
     }
@@ -48,13 +48,14 @@ public class SerialInfoContentPresenter implements ISerialInfoContract.Presenter
 
                     @Override
                     public void onNext(IDetailedTvShowModel value) {
+
                         String description = value.getOverview();
                         String image = String.format("%s%s", "https://image.tmdb.org/t/p/w640", value.getBackdropPath());
                         String rating = String.valueOf(value.getVoteAverage());
                         int numOfSeasons = value.getNumberOfSeasons();
 
 
-
+                        view.setTitle(value.getName());
                         view.fillInfo(image, rating, description, numOfSeasons, id);
                     }
 

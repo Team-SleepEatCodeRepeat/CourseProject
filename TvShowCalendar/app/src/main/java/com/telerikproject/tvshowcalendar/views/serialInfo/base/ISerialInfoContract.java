@@ -8,6 +8,8 @@ import java.util.ArrayList;
 
 public interface ISerialInfoContract {
     interface View extends BaseView<ISerialInfoContract.Presenter> {
+
+        void setTitle(String title);
         void fillInfo(String tvRating, String image, String description, int numOfSeasons, String tvShowId);
     }
 

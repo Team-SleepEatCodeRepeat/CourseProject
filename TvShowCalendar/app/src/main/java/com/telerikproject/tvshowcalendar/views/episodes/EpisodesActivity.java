@@ -57,8 +57,6 @@ public class EpisodesActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         this.presenter.getSeasonEpisodes(seasonNumber, tvShowId, loading);
-        getSupportActionBar().setTitle("Season number must be here");
-
         backFragment.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

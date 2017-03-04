@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.TextViewCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -64,6 +65,11 @@ public class SerialInfoContentFragment extends Fragment implements ISerialInfoCo
     @Override
     public void setPresenter(ISerialInfoContract.Presenter presenter) {
         this.presenter = presenter;
+    }
+
+    @Override
+    public void setTitle(String title) {
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle(title);
     }
 
     @Override

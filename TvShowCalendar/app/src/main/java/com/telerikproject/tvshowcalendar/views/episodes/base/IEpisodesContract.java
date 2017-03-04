@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 public interface IEpisodesContract {
     interface View extends BaseView<Presenter> {
+        void setTitle(String title);
         void fillInfo(ArrayList<String> titles, ArrayList<String> episodeNumbers, ArrayList<String> datesRelease, ArrayList<String> yearsRelease);
     }
 
