@@ -11,11 +11,11 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <fragment
-            android:id="@+id/fragment"
-            android:name="com.telerikproject.tvshowcalendar.fragments.ToolbarFragment"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+       <fragment
+           android:id="@+id/back_toolbar"
+           android:name="com.telerikproject.tvshowcalendar.fragments.BackToolbarFragment"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"/>
 
         <fragment
             android:id="@+id/fragment_serial_info_content"

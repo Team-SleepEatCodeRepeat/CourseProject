@@ -47,6 +47,7 @@
         android:textStyle="italic" />
 
     <LinearLayout
+        android:id="@+id/wrap_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/fl_series_image"
@@ -128,8 +129,11 @@
 
         <ListView
             android:id="@+id/lv_seasons"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:paddingEnd="10dp"
+            android:paddingStart="10dp" />
     </LinearLayout>
 </RelativeLayout>
