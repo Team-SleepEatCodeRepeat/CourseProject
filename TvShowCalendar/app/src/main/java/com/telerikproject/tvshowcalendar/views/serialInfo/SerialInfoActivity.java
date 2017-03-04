@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.telerikproject.tvshowcalendar.BaseApplication;
 import com.telerikproject.tvshowcalendar.R;
+import com.telerikproject.tvshowcalendar.fragments.BackToolbarFragment;
 import com.telerikproject.tvshowcalendar.fragments.ILoadingFragment;
 import com.telerikproject.tvshowcalendar.modules.ControllerModule;
 import com.telerikproject.tvshowcalendar.views.serialInfo.base.ISerialInfoContract;
@@ -31,6 +32,7 @@ public class SerialInfoActivity extends AppCompatActivity {
 
     private String id;
     private ILoadingFragment loading;
+    BackToolbarFragment backFragment;
 
     @Inject
     FragmentManager fragmentManager;
@@ -53,32 +55,22 @@ public class SerialInfoActivity extends AppCompatActivity {
         content.setPresenter(contentPresenter);
         this.id = getIntent().getStringExtra("id");
         this.loading = loadingFragment.create(this);
-
-        Toolbar toolbar = (Toolbar) this.findViewById(R.id.toolbar);
-        this.setSupportActionBar(toolbar);
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-
-        getSupportActionBar().setTitle("Serial title must be here");
+        
+        backFragment = (BackToolbarFragment) fragmentManager.findFragmentById(R.id.back_toolbar);
     }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                onBackPressed();
-                break;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
 
     @Override
     protected void onStart() {
         super.onStart();
         this.contentPresenter.getSerial(this.id, this.loading);
+        getSupportActionBar().setTitle("Serial title must be here");
+
+        backFragment.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
     }
 
     private void injectDependencies() {
