@@ -1,8 +1,12 @@
 package com.telerikproject.tvshowcalendar.views.home;
 
+import android.app.SearchManager;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.SearchView;
+import android.view.Menu;
+import android.view.MenuInflater;
 
 import com.telerikproject.tvshowcalendar.BaseApplication;
 import com.telerikproject.tvshowcalendar.R;
@@ -44,6 +48,22 @@ public class HomeActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         this.contentPresenter.getTopTvShows(this.loading);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+
+        SearchManager searchManager =
+                (SearchManager) getSystemService(getBaseContext().SEARCH_SERVICE);
+        SearchView searchView =
+                (SearchView) menu.findItem(R.id.search).getActionView();
+        searchView.setSearchableInfo(
+                searchManager.getSearchableInfo(getComponentName()));
+
+
+        return true;
     }
 
     private void injectDependencies() {

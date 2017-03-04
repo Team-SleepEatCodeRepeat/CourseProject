@@ -55,7 +55,7 @@ public class SerialInfoActivity extends AppCompatActivity {
         content.setPresenter(contentPresenter);
         this.id = getIntent().getStringExtra("id");
         this.loading = loadingFragment.create(this);
-        
+
         backFragment = (BackToolbarFragment) fragmentManager.findFragmentById(R.id.back_toolbar);
     }
 
