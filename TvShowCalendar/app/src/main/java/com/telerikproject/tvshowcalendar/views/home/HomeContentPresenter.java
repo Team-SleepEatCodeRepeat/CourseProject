@@ -80,8 +80,6 @@ public class HomeContentPresenter implements IHomeContract.Presenter {
                         loading.hide();
                     }
                 });
-
     }
-
 }
 

@@ -62,7 +62,6 @@ public class HomeActivity extends AppCompatActivity {
         searchView.setSearchableInfo(
                 searchManager.getSearchableInfo(getComponentName()));
 
-
         return true;
     }
 

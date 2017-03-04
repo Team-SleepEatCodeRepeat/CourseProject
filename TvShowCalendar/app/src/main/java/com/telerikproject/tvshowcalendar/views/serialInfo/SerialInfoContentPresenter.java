@@ -28,7 +28,6 @@ public class SerialInfoContentPresenter implements ISerialInfoContract.Presenter
 
     }
 
-
     @Override
     public void setView(ISerialInfoContract.View view) {
         this.view = view;

@@ -41,15 +41,10 @@ public class LoginActivity extends AppCompatActivity {
         this.setSupportActionBar(toolbar);
 
         loginFragment = (LoginFragment) fragmentManager.findFragmentById(R.id.fragment_login);
-
         loginFragment.setPresenter(presenter);
-
         presenter.setView(loginFragment);
-
         this.loading = loadingFragment.create(this);
-
     }
-
 
     private void injectDependencies() {
         BaseApplication.bind(this)

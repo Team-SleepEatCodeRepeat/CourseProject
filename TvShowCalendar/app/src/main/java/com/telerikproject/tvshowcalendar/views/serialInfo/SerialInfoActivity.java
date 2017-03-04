@@ -46,13 +46,12 @@ public class SerialInfoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_serial_info);
-
         this.injectDependencies();
 
         content = (SerialInfoContentFragment) fragmentManager.findFragmentById(R.id.fragment_serial_info_content);
-
         contentPresenter.setView(content);
         content.setPresenter(contentPresenter);
+
         this.id = getIntent().getStringExtra("id");
         this.loading = loadingFragment.create(this);
 
@@ -63,7 +62,6 @@ public class SerialInfoActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         this.contentPresenter.getSerial(this.id, this.loading);
-
         backFragment.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

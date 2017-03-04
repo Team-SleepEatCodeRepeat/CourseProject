@@ -25,10 +25,9 @@ public class GridAdapter extends BaseAdapter {
     ArrayList<String> images;
     ArrayList<String> ids;
 
-
-
     private static LayoutInflater inflater = null;
 
+    //TODO  setVisibility on Imageviews with id isWatched and IsFollowed
     public GridAdapter(Activity choosenActivity, ArrayList<String> moviesTitles, ArrayList<String> moviesRating, ArrayList<String> moviesImages, ArrayList<String> ids) {
         titles = moviesTitles;
         ratings = moviesRating;

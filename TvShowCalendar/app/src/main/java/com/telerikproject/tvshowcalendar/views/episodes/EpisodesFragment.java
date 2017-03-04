@@ -21,18 +21,14 @@ public class EpisodesFragment extends Fragment implements IEpisodesContract.View
 
     ListView listView;
 
-
     public EpisodesFragment() {
         // Required empty public constructor
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_episodes, container, false);
-
         listView = (ListView) view.findViewById(R.id.lv_episodes);
 
         return view;

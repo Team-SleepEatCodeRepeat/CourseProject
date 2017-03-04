@@ -36,6 +36,7 @@ public class ProfileOptionsFragment extends Fragment {
         int position = this.getArguments().getInt("position");
 
         View root = null;
+        //TODO sort series by chosen profil option and load it in view
         switch (position) {
             case 0:
                 View following = inflater.inflate(R.layout.fragment_profile_options, container, false);

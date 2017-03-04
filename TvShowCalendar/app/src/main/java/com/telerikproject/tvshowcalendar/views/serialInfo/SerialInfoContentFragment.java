@@ -1,6 +1,5 @@
 package com.telerikproject.tvshowcalendar.views.serialInfo;
 
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -26,9 +25,6 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class SerialInfoContentFragment extends Fragment implements ISerialInfoContract.View {
 
     private ISerialInfoContract.Presenter presenter;
@@ -37,20 +33,15 @@ public class SerialInfoContentFragment extends Fragment implements ISerialInfoCo
     TextView tvRating;
     ImageView movieImage;
     TextView tvDescription;
-
     ListView seasons;
 
-
     public SerialInfoContentFragment() {
-
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_serial_info_content, container, false);
 
         this.tvRating = (TextView) view.findViewById(R.id.tv_rating);
@@ -58,7 +49,6 @@ public class SerialInfoContentFragment extends Fragment implements ISerialInfoCo
         this.tvDescription = (TextView) view.findViewById(R.id.tv_description);
 
         seasons = (ListView) view.findViewById(R.id.lv_seasons);
-
         return view;
     }
 
@@ -82,7 +72,6 @@ public class SerialInfoContentFragment extends Fragment implements ISerialInfoCo
         seasons.setAdapter(new SeasonsListAdapter(getActivity(), numOfSeasons, tvShowId));
 
         justifyListViewHeightBasedOnChildren(seasons);
-
     }
 
     public static void justifyListViewHeightBasedOnChildren (ListView listView) {
