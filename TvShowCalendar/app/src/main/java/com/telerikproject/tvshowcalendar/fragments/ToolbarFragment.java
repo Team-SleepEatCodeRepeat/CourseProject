@@ -73,13 +73,8 @@ public class ToolbarFragment extends Fragment {
                 .withName("Profile")
                 .withIcon(FontAwesome.Icon.faw_user);
 
-        SecondaryDrawerItem options = new SecondaryDrawerItem()
-                .withIdentifier(3)
-                .withName("Options")
-                .withIcon(FontAwesome.Icon.faw_cogs);
-
         SecondaryDrawerItem login = new SecondaryDrawerItem()
-                .withIdentifier(4)
+                .withIdentifier(3)
                 .withName("Sign In")
                 .withIcon(FontAwesome.Icon.faw_sign_in);
 
@@ -95,7 +90,6 @@ public class ToolbarFragment extends Fragment {
                         home,
                         new DividerDrawerItem(),
                         profile,
-                        options,
                         userSession.isUserLoggedIn() ? logout : login
                 )
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
@@ -109,13 +103,7 @@ public class ToolbarFragment extends Fragment {
                             case 2:
                                 Intent profile = new Intent(getActivity(), ProfileActivity.class);
                                 startActivity(profile);
-                                break;
                             case 3:
-                                Toast.makeText(getActivity(), "Options", Toast.LENGTH_LONG).show();
-//                                Intent options = new Intent(getActivity(), OptionsActivity.class);
-//                                startActivity(options);
-                                break;
-                            case 4:
                                 if(userSession.isUserLoggedIn()) {
                                     userSession.clearSession();
                                     Intent intent = new Intent(getActivity(), HomeActivity.class);
@@ -124,6 +112,8 @@ public class ToolbarFragment extends Fragment {
                                     Intent login = new Intent(getActivity(), LoginActivity.class);
                                     startActivity(login);
                                 }
+                                Intent login = new Intent(getActivity(), LoginActivity.class);
+                                startActivity(login);
                                 break;
                         }
                         return false;

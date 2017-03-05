@@ -16,6 +16,7 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:visibility="gone"
-        android:text="No tv shows found"/>
+        android:textSize="30sp"
+        android:text="@string/no_tvshows_found"/>
 
 </FrameLayout>

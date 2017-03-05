@@ -56,6 +56,38 @@ public class SerialInfoActivity extends AppCompatActivity {
         this.loading = loadingFragment.create(this);
 
         backFragment = (BackToolbarFragment) fragmentManager.findFragmentById(R.id.back_toolbar);
+
+        final Button followBtn = (Button)this.findViewById(R.id.btn_follow);
+        followBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Button btn = (Button)v;
+                if(btn.getText() == "Follow")
+                {
+                    followBtn.setText("Following");
+                }
+                else
+                {
+                    followBtn.setText("Follow");
+                }
+            }
+        });
+
+        final Button watchedBtn = (Button)this.findViewById(R.id.btn_watched);
+        watchedBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Button btn = (Button)v;
+                if(btn.getText() == "Not Watched")
+                {
+                    watchedBtn.setText("Watched");
+                }
+                else
+                {
+                    watchedBtn.setText("Not Watched");
+                }
+            }
+        });
     }
 
     @Override
