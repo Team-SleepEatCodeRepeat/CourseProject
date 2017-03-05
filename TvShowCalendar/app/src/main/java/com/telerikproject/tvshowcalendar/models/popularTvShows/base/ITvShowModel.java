@@ -3,6 +3,8 @@ package com.telerikproject.tvshowcalendar.models.popularTvShows.base;
 import java.util.ArrayList;
 
 public interface ITvShowModel {
+    int getId();
+
     String getPoster();
 
     String getPopularity();

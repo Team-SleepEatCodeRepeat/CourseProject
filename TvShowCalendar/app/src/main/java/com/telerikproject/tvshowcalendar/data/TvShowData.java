@@ -1,7 +1,10 @@
 package com.telerikproject.tvshowcalendar.data;
 
 import com.telerikproject.tvshowcalendar.constants.base.ITheMovieDbConstants;
+import com.telerikproject.tvshowcalendar.models.ITvShow;
+import com.telerikproject.tvshowcalendar.models.TvShow;
 import com.telerikproject.tvshowcalendar.models.detailedTvShow.base.IDetailedTvShowModel;
+import com.telerikproject.tvshowcalendar.models.popularTvShows.TvShowModel;
 import com.telerikproject.tvshowcalendar.models.popularTvShows.base.IPopularTvShowsModel;
 import com.telerikproject.tvshowcalendar.models.popularTvShows.base.ITvShowModel;
 import com.telerikproject.tvshowcalendar.models.season.base.ITvShowSeasonModel;
@@ -11,6 +14,8 @@ import com.telerikproject.tvshowcalendar.utils.base.IOkHttpRequester;
 import com.telerikproject.tvshowcalendar.utils.base.IOkHttpResponse;
 
 import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -35,21 +40,22 @@ public class TvShowData implements ITvShowData {
         this.jsonParser = jsonParser;
         this.tvShowModelType = tvShowModelType;
         this.popularTvShowsType = popularTvShowsType;
-        this.detailedTvShowModelType  = detailedTvShowType;
+        this.detailedTvShowModelType = detailedTvShowType;
         this.tvShowSeasonModelType = tvShowSeasonModelType;
         this.tmdbConstants = tmdbConstants;
     }
 
     @Override
-    public Observable<IPopularTvShowsModel> getTopTvShows() {
+    public Observable<List<ITvShow>> getTopTvShows() {
         return okHttpRequester.get(tmdbConstants.getPopularTvShowsUrl())
-                .map(new Function<IOkHttpResponse, IPopularTvShowsModel>() {
+                .map(new Function<IOkHttpResponse, List<ITvShow>>() {
                     @Override
-                    public IPopularTvShowsModel apply(IOkHttpResponse okHttpResponse) throws Exception {
+                    public List<ITvShow> apply(IOkHttpResponse okHttpResponse) throws Exception {
                         ResponseBody respBody = okHttpResponse.getBody();
                         IPopularTvShowsModel tvShows = jsonParser.fromJson(respBody.string(), popularTvShowsType);
 
-                        return tvShows;
+                        List<TvShowModel> tvShowModels = tvShows.getResults();
+                        return parseTvShowModels(tvShowModels);
                     }
                 });
     }
@@ -83,16 +89,33 @@ public class TvShowData implements ITvShowData {
     }
 
     @Override
-    public Observable<IPopularTvShowsModel> getTvShowsByQuery(String query) {
+    public Observable<List<ITvShow>> getTvShowsByQuery(String query) {
         return okHttpRequester.get(tmdbConstants.getSearchTvShowUrl(query))
-                .map(new Function<IOkHttpResponse, IPopularTvShowsModel>() {
+                .map(new Function<IOkHttpResponse, List<ITvShow>>() {
                     @Override
-                    public IPopularTvShowsModel apply(IOkHttpResponse okHttpResponse) throws Exception {
+                    public List<ITvShow> apply(IOkHttpResponse okHttpResponse) throws Exception {
                         ResponseBody respBody = okHttpResponse.getBody();
                         IPopularTvShowsModel tvShows = jsonParser.fromJson(respBody.string(), popularTvShowsType);
 
-                        return tvShows;
+                        List<TvShowModel> tvShowModels = tvShows.getResults();
+                        return parseTvShowModels(tvShowModels);
                     }
                 });
+    }
+
+    private List<ITvShow> parseTvShowModels(List<TvShowModel> tvShowModels) {
+        final List<ITvShow> parsedTvShows = new ArrayList<>();
+
+        for (TvShowModel tvShow : tvShowModels) {
+            String poster = "https://image.tmdb.org/t/p/w640" + tvShow.getPoster();
+            String name = tvShow.getName();
+            String vote = String.valueOf((double) Math.round(tvShow.getVote() * 10) / 10 + " / 10");
+            String id = String.valueOf(tvShow.getId());
+
+            ITvShow parsedTvShow = new TvShow(id, name, vote, poster);
+            parsedTvShows.add(parsedTvShow);
+        }
+
+        return parsedTvShows;
     }
 }

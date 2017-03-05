@@ -5,8 +5,17 @@
     tools:context="com.telerikproject.tvshowcalendar.views.home.HomeContentFragment">
 
     <GridView
-    android:id="@+id/gv_top_10"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:numColumns="2" />
+        android:id="@+id/gv_top_10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:numColumns="2" />
+
+    <TextView
+        android:id="@+id/tv_not_found"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:visibility="gone"
+        android:text="No tv shows found"/>
+
 </FrameLayout>

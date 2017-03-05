@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
+import android.widget.TextView;
 
 import com.telerikproject.tvshowcalendar.BaseApplication;
 import com.telerikproject.tvshowcalendar.R;
@@ -23,6 +24,8 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import butterknife.BindView;
+
 public class HomeContentFragment extends Fragment implements IHomeContract.View {
 
     private IHomeContract.Presenter presenter;
@@ -32,6 +35,8 @@ public class HomeContentFragment extends Fragment implements IHomeContract.View 
 
     @Inject
     ILoadingFragment loadingFragment;
+
+    TextView notFoundTextView;
 
     private ILoadingFragment loading;
     private GridView gridView;
@@ -45,9 +50,10 @@ public class HomeContentFragment extends Fragment implements IHomeContract.View 
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_home_content, container, false);
-        injectDependencies();
         BaseApplication.bind(this, view);
+        injectDependencies();
 
+        notFoundTextView = (TextView) view.findViewById(R.id.tv_not_found);
         adapter = new GridAdapter(mActivity, new ArrayList<ITvShow>());
         gridView = (GridView) view.findViewById(R.id.gv_top_10);
         gridView.setAdapter(adapter);
@@ -79,6 +85,12 @@ public class HomeContentFragment extends Fragment implements IHomeContract.View 
     @Override
     public void fillInfo(List<ITvShow> tvShows) {
         adapter.swap(tvShows);
+
+        if (tvShows.isEmpty()) {
+            notFoundTextView.setVisibility(View.VISIBLE);
+        } else {
+            notFoundTextView.setVisibility(View.GONE);
+        }
     }
 
     @Override

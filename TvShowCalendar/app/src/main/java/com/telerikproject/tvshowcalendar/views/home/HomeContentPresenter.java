@@ -9,6 +9,7 @@ import com.telerikproject.tvshowcalendar.data.base.ITvShowData;
 import com.telerikproject.tvshowcalendar.views.home.base.IHomeContract;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -45,29 +46,22 @@ public class HomeContentPresenter implements IHomeContract.Presenter {
         tvShowData.getTopTvShows()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<IPopularTvShowsModel>() {
+                .subscribe(new Observer<List<ITvShow>>() {
+                    private List<ITvShow> parsedTvShows;
+
                     @Override
                     public void onSubscribe(Disposable d) {
                         view.startLoading();
                     }
 
                     @Override
-                    public void onNext(IPopularTvShowsModel value) {
-                        ArrayList<TvShowModel> tvShows = value.getResults();
-
-                        for (TvShowModel tvShow : tvShows) {
-                            String poster = "https://image.tmdb.org/t/p/w640" + tvShow.getPoster();
-                            String name = tvShow.getName();
-                            String vote = String.valueOf((double) Math.round(tvShow.getVote() * 10) / 10 + " / 10");
-                            String id = String.valueOf(tvShow.getId());
-
-                            ITvShow parsedTvShow = new TvShow(id, name, vote, poster);
-                            parsedTvShows.add(parsedTvShow);
-                        }
+                    public void onNext(List<ITvShow> value) {
+                        parsedTvShows = value;
                     }
 
                     @Override
                     public void onError(Throwable e) {
+                        view.stopLoading();
                     }
 
                     @Override
@@ -89,29 +83,22 @@ public class HomeContentPresenter implements IHomeContract.Presenter {
         tvShowData.getTvShowsByQuery(query)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<IPopularTvShowsModel>() {
+                .subscribe(new Observer<List<ITvShow>>() {
+                    private List<ITvShow> parsedTvShows;
+
                     @Override
                     public void onSubscribe(Disposable d) {
                         view.startLoading();
                     }
 
                     @Override
-                    public void onNext(IPopularTvShowsModel value) {
-                        ArrayList<TvShowModel> tvShows = value.getResults();
-
-                        for (TvShowModel tvShow : tvShows) {
-                            String poster = "https://image.tmdb.org/t/p/w640" + tvShow.getPoster();
-                            String name = tvShow.getName();
-                            String vote = String.valueOf((double) Math.round(tvShow.getVote() * 10) / 10 + " / 10");
-                            String id = String.valueOf(tvShow.getId());
-
-                            ITvShow parsedTvShow = new TvShow(id, name, vote, poster);
-                            parsedTvShows.add(parsedTvShow);
-                        }
+                    public void onNext(List<ITvShow> value) {
+                        parsedTvShows = value;
                     }
 
                     @Override
                     public void onError(Throwable e) {
+                        view.stopLoading();
                     }
 
                     @Override
