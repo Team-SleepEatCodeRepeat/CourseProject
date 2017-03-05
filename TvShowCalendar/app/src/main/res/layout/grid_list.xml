@@ -40,8 +40,7 @@
         app:btn_color="@android:color/darker_gray"
         app:btn_fill_color="@color/md_yellow_600"
         app:allow_random_color="false"
-        app:siShape="@raw/star"
-        android:visibility="gone"/>
+        app:siShape="@raw/star"/>
 
     <TextView
         android:id="@+id/tv_title"
