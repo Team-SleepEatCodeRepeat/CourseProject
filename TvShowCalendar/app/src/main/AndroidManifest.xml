@@ -19,10 +19,11 @@
         <activity
             android:name=".views.home.HomeActivity"
             android:label="Tv Show Calendar"
-            android:theme="@style/AppTheme">
+            android:theme="@style/AppTheme"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
             <meta-data android:name="android.app.searchable"
@@ -30,21 +31,34 @@
         </activity>
         <activity
             android:name=".views.login.LoginActivity"
-            android:label="@string/title_activity_login" />
+            android:label="@string/title_activity_login"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".views.register.RegisterActivity"
-            android:label="@string/title_activity_register" />
+            android:label="@string/title_activity_register"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".activities.ProfileActivity"
-            android:label="Profile" />
+            android:label="Profile"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".views.serialInfo.SerialInfoActivity"
-            android:label="Serial Info" />
-        <activity android:name=".activities.SearchActivity" />
+            android:label="Serial Info"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activities.SearchActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".views.episodes.EpisodesActivity"
             android:label="@string/title_activity_episodes"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
