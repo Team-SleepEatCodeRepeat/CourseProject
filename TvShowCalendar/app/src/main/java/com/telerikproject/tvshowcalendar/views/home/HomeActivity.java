@@ -25,11 +25,6 @@ public class HomeActivity extends AppCompatActivity {
     @Inject
     FragmentManager fragmentManager;
 
-    @Inject
-    ILoadingFragment loadingFragment;
-
-    ILoadingFragment loading;
-
     private HomeContentFragment content;
 
     @Override
@@ -42,8 +37,6 @@ public class HomeActivity extends AppCompatActivity {
 
         contentPresenter.setView(content);
         content.setPresenter(contentPresenter);
-
-        this.loading = this.loadingFragment.create(this);
 
         Intent intent = getIntent();
         handleSearchQuery(intent);
@@ -62,7 +55,7 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        this.contentPresenter.getTopTvShows(this.loading);
+        this.contentPresenter.getTopTvShows();
     }
 
     @Override

@@ -12,10 +12,14 @@ import java.util.List;
 public interface IHomeContract {
     interface View extends BaseView<Presenter> {
         void fillInfo(List<ITvShow> tvShows);
+
+        void startLoading();
+
+        void stopLoading();
     }
 
     interface Presenter extends BasePresenter<View> {
-        void getTopTvShows(ILoadingFragment loadingFragment);
+        void getTopTvShows();
 
         void getTvShowsByQuery(final String query);
     }

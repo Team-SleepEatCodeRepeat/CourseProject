@@ -2,6 +2,7 @@ package com.telerikproject.tvshowcalendar.views.home;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import com.telerikproject.tvshowcalendar.BaseApplication;
 import com.telerikproject.tvshowcalendar.R;
 import com.telerikproject.tvshowcalendar.adapters.GridAdapter;
 import com.telerikproject.tvshowcalendar.adapters.SearchAdapter;
+import com.telerikproject.tvshowcalendar.fragments.ILoadingFragment;
 import com.telerikproject.tvshowcalendar.models.ITvShow;
 import com.telerikproject.tvshowcalendar.modules.ControllerModule;
 import com.telerikproject.tvshowcalendar.views.home.base.IHomeContract;
@@ -28,6 +30,10 @@ public class HomeContentFragment extends Fragment implements IHomeContract.View 
     @Inject
     public Activity mActivity;
 
+    @Inject
+    ILoadingFragment loadingFragment;
+
+    private ILoadingFragment loading;
     private GridView gridView;
     private GridAdapter adapter;
 
@@ -37,6 +43,7 @@ public class HomeContentFragment extends Fragment implements IHomeContract.View 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         View view = inflater.inflate(R.layout.fragment_home_content, container, false);
         injectDependencies();
         BaseApplication.bind(this, view);
@@ -46,6 +53,12 @@ public class HomeContentFragment extends Fragment implements IHomeContract.View 
         gridView.setAdapter(adapter);
 
         return view;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        this.loading = this.loadingFragment.create(mActivity);
     }
 
     @Override
@@ -66,5 +79,15 @@ public class HomeContentFragment extends Fragment implements IHomeContract.View 
     @Override
     public void fillInfo(List<ITvShow> tvShows) {
         adapter.swap(tvShows);
+    }
+
+    @Override
+    public void startLoading() {
+        loading.show();
+    }
+
+    @Override
+    public void stopLoading() {
+        loading.hide();
     }
 }

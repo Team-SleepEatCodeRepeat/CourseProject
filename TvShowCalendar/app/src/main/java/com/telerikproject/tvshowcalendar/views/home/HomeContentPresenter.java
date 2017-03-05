@@ -39,7 +39,7 @@ public class HomeContentPresenter implements IHomeContract.Presenter {
     }
 
     @Override
-    public void getTopTvShows(final ILoadingFragment loading) {
+    public void getTopTvShows() {
         final ArrayList<ITvShow> parsedTvShows = new ArrayList<>();
 
         tvShowData.getTopTvShows()
@@ -48,7 +48,7 @@ public class HomeContentPresenter implements IHomeContract.Presenter {
                 .subscribe(new Observer<IPopularTvShowsModel>() {
                     @Override
                     public void onSubscribe(Disposable d) {
-                        loading.show();
+                        view.startLoading();
                     }
 
                     @Override
@@ -73,7 +73,7 @@ public class HomeContentPresenter implements IHomeContract.Presenter {
                     @Override
                     public void onComplete() {
                         view.fillInfo(parsedTvShows);
-                        loading.hide();
+                        view.stopLoading();
                     }
                 });
     }
@@ -92,6 +92,7 @@ public class HomeContentPresenter implements IHomeContract.Presenter {
                 .subscribe(new Observer<IPopularTvShowsModel>() {
                     @Override
                     public void onSubscribe(Disposable d) {
+                        view.startLoading();
                     }
 
                     @Override
@@ -116,6 +117,7 @@ public class HomeContentPresenter implements IHomeContract.Presenter {
                     @Override
                     public void onComplete() {
                         view.fillInfo(parsedTvShows);
+                        view.stopLoading();
                     }
                 });
     }
