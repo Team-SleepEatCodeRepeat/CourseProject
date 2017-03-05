@@ -3,6 +3,7 @@ package com.telerikproject.tvshowcalendar.views.home;
 import android.app.SearchManager;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
@@ -35,7 +36,6 @@ public class HomeActivity extends AppCompatActivity {
         this.injectDependencies();
 
         content = (HomeContentFragment) fragmentManager.findFragmentById(R.id.fragment_home_content);
-
         contentPresenter.setView(content);
         content.setPresenter(contentPresenter);
 
