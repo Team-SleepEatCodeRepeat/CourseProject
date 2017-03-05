@@ -46,17 +46,19 @@ public class LoginPresenter implements ILoginContract.Presenter {
 
                     @Override
                     public void onNext(IUserModel value) {
-                        IUserModel testVal = value;
                     }
 
                     @Override
                     public void onError(Throwable e) {
+
+                        Throwable c = e;
                         view.hideLoading();
                     }
 
                     @Override
                     public void onComplete() {
                         view.hideLoading();
+                        view.redirectToHome();
                     }
                 });
     }

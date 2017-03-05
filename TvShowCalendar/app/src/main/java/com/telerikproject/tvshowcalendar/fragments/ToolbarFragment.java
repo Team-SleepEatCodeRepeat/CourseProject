@@ -2,6 +2,7 @@ package com.telerikproject.tvshowcalendar.fragments;
 
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -22,22 +23,26 @@ import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.telerikproject.tvshowcalendar.R;
+import com.telerikproject.tvshowcalendar.utils.base.IJsonParser;
+import com.telerikproject.tvshowcalendar.utils.userSession.base.IUserSession;
 import com.telerikproject.tvshowcalendar.views.login.LoginActivity;
 import com.telerikproject.tvshowcalendar.views.home.HomeActivity;
 import com.telerikproject.tvshowcalendar.activities.ProfileActivity;
 
-/**
- * A simple {@link Fragment} subclass.
- */
+import javax.inject.Inject;
+
 public class ToolbarFragment extends Fragment {
+
+    @Inject
+    IUserSession userSession;
 
     Toolbar toolbar;
     private AppCompatActivity currentActivity;
 
+
     public ToolbarFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -78,6 +83,11 @@ public class ToolbarFragment extends Fragment {
                 .withName("Sign In")
                 .withIcon(FontAwesome.Icon.faw_sign_in);
 
+        SecondaryDrawerItem logout = new SecondaryDrawerItem()
+                .withIdentifier(5)
+                .withName("Logout")
+                .withIcon(FontAwesome.Icon.faw_sign_out);
+
         Drawer result = new DrawerBuilder()
                 .withActivity(getActivity())
                 .withToolbar(toolbar)
@@ -86,7 +96,7 @@ public class ToolbarFragment extends Fragment {
                         new DividerDrawerItem(),
                         profile,
                         options,
-                        login
+                        userSession.isUserLoggedIn() ? logout : login
                 )
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     @Override
@@ -106,8 +116,14 @@ public class ToolbarFragment extends Fragment {
 //                                startActivity(options);
                                 break;
                             case 4:
-                                Intent login = new Intent(getActivity(), LoginActivity.class);
-                                startActivity(login);
+                                if(userSession.isUserLoggedIn()) {
+                                    userSession.clearSession();
+                                    Intent intent = new Intent(getActivity(), HomeActivity.class);
+                                    startActivity(intent);
+                                } else {
+                                    Intent login = new Intent(getActivity(), LoginActivity.class);
+                                    startActivity(login);
+                                }
                                 break;
                         }
                         return false;

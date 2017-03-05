@@ -6,4 +6,5 @@ public interface IJsonParser {
 
     <T> T fromJson(String json, Type ClassOfT);
 
+    String getDirectMember(String json, String memberName);
 }

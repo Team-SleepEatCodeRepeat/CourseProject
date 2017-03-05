@@ -12,6 +12,8 @@ public interface ILoginContract {
         void showLoading();
 
         void hideLoading();
+
+        void redirectToHome();
     }
 
     interface Presenter extends BasePresenter<View> {

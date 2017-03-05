@@ -16,6 +16,7 @@ import com.telerikproject.tvshowcalendar.BaseApplication;
 import com.telerikproject.tvshowcalendar.R;
 import com.telerikproject.tvshowcalendar.fragments.ILoadingFragment;
 import com.telerikproject.tvshowcalendar.modules.ControllerModule;
+import com.telerikproject.tvshowcalendar.views.home.HomeActivity;
 import com.telerikproject.tvshowcalendar.views.login.base.ILoginContract;
 
 import javax.inject.Inject;
@@ -23,9 +24,6 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class LoginFragment extends Fragment implements ILoginContract.View {
 
     private ILoginContract.Presenter presenter;
@@ -57,6 +55,7 @@ public class LoginFragment extends Fragment implements ILoginContract.View {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(getActivity(), usernameET.getText(), Toast.LENGTH_SHORT).show();
                 String username = usernameET.getText().toString();
                 String password = passwordET.getText().toString();
 
@@ -119,5 +118,11 @@ public class LoginFragment extends Fragment implements ILoginContract.View {
     @Override
     public void hideLoading() {
         this.loading.hide();
+    }
+
+    @Override
+    public void redirectToHome() {
+        Intent intent = new Intent(getActivity(), HomeActivity.class);
+        startActivity(intent);
     }
 }

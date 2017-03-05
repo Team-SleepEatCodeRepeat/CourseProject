@@ -48,7 +48,8 @@ public class UserData implements IUserData {
                     @Override
                     public IUserModel apply(IOkHttpResponse okHttpResponse) throws Exception {
                         String respBody = okHttpResponse.getBody().string();
-                        IUserModel user = jsonParser.fromJson(respBody, userModelType);
+                        String userJson = jsonParser.getDirectMember(respBody, "user");
+                        IUserModel user = jsonParser.fromJson(userJson, userModelType);
 
                         userSession.setUsername(user.getUsername());
 

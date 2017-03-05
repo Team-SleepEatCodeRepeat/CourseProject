@@ -2,6 +2,7 @@ package com.telerikproject.tvshowcalendar;
 
 
 import com.telerikproject.tvshowcalendar.data.base.ITvShowData;
+import com.telerikproject.tvshowcalendar.fragments.ToolbarFragment;
 import com.telerikproject.tvshowcalendar.views.episodes.EpisodesActivity;
 import com.telerikproject.tvshowcalendar.views.episodes.EpisodesFragment;
 import com.telerikproject.tvshowcalendar.views.episodes.EpisodesPresenter;
@@ -54,4 +55,7 @@ public interface ControllerComponent {
     void inject(RegisterPresenter registerPresenter);
 
     void inject(RegisterFragment registerFragment);
+
+    void inject(ToolbarFragment toolbarFragment);
+
 }
