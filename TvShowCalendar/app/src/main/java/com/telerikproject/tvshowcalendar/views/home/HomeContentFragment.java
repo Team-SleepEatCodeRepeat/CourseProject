@@ -13,7 +13,6 @@ import android.widget.TextView;
 import com.telerikproject.tvshowcalendar.BaseApplication;
 import com.telerikproject.tvshowcalendar.R;
 import com.telerikproject.tvshowcalendar.adapters.GridAdapter;
-import com.telerikproject.tvshowcalendar.adapters.SearchAdapter;
 import com.telerikproject.tvshowcalendar.fragments.ILoadingFragment;
 import com.telerikproject.tvshowcalendar.models.ITvShow;
 import com.telerikproject.tvshowcalendar.modules.ControllerModule;
@@ -23,8 +22,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
-
-import butterknife.BindView;
 
 public class HomeContentFragment extends Fragment implements IHomeContract.View {
 
