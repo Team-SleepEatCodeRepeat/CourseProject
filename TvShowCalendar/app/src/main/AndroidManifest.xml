@@ -18,47 +18,50 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".views.home.HomeActivity"
-            android:label="Tv Show Calendar"
-            android:theme="@style/AppTheme"
             android:configChanges="orientation"
-            android:screenOrientation="portrait">
+            android:label="Tv Show Calendar"
+            android:screenOrientation="portrait"
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
-            <meta-data android:name="android.app.searchable"
-                android:resource="@layout/searchable" />
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
         </activity>
+        <meta-data
+            android:name="android.app.default_searchable"
+            android:value=".MainActivity" />
+
         <activity
             android:name=".views.login.LoginActivity"
-            android:label="@string/title_activity_login"
             android:configChanges="orientation"
-            android:screenOrientation="portrait"/>
+            android:label="@string/title_activity_login"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".views.register.RegisterActivity"
-            android:label="@string/title_activity_register"
             android:configChanges="orientation"
-            android:screenOrientation="portrait"/>
+            android:label="@string/title_activity_register"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.ProfileActivity"
-            android:label="Profile"
             android:configChanges="orientation"
-            android:screenOrientation="portrait"/>
+            android:label="Profile"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".views.serialInfo.SerialInfoActivity"
+            android:configChanges="orientation"
             android:label="Serial Info"
-            android:configChanges="orientation"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name=".activities.SearchActivity"
-            android:configChanges="orientation"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".views.episodes.EpisodesActivity"
-            android:label="@string/title_activity_episodes"
-            android:theme="@style/AppTheme"
             android:configChanges="orientation"
-            android:screenOrientation="portrait"/>
+            android:label="@string/title_activity_episodes"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
     </application>
 
 </manifest>

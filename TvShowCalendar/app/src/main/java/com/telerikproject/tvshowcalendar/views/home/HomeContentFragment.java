@@ -11,10 +11,13 @@ import android.widget.GridView;
 import com.telerikproject.tvshowcalendar.BaseApplication;
 import com.telerikproject.tvshowcalendar.R;
 import com.telerikproject.tvshowcalendar.adapters.GridAdapter;
+import com.telerikproject.tvshowcalendar.adapters.SearchAdapter;
+import com.telerikproject.tvshowcalendar.models.ITvShow;
 import com.telerikproject.tvshowcalendar.modules.ControllerModule;
 import com.telerikproject.tvshowcalendar.views.home.base.IHomeContract;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -24,15 +27,11 @@ public class HomeContentFragment extends Fragment implements IHomeContract.View 
 
     @Inject
     public Activity mActivity;
-    public ArrayList<String> moviesImages;
-    public ArrayList<String> moviesTitles;
-    public ArrayList<String> moviesRating;
-    public ArrayList<String> moviesIds;
 
-    GridView gridView;
+    private GridView gridView;
+    private GridAdapter adapter;
 
     public HomeContentFragment() {
-        // Required empty public constructor
     }
 
     @Override
@@ -42,7 +41,9 @@ public class HomeContentFragment extends Fragment implements IHomeContract.View 
         injectDependencies();
         BaseApplication.bind(this, view);
 
+        adapter = new GridAdapter(mActivity, new ArrayList<ITvShow>());
         gridView = (GridView) view.findViewById(R.id.gv_top_10);
+        gridView.setAdapter(adapter);
 
         return view;
     }
@@ -63,12 +64,7 @@ public class HomeContentFragment extends Fragment implements IHomeContract.View 
     }
 
     @Override
-    public void fillInfo(ArrayList<String> titles, ArrayList<String> images, ArrayList<String> ids, ArrayList<String> ratings) {
-        this.moviesIds = ids;
-        this.moviesRating = ratings;
-        this.moviesTitles = titles;
-        this.moviesImages = images;
-
-        gridView.setAdapter(new GridAdapter(mActivity, moviesTitles, moviesRating, moviesImages, moviesIds));
+    public void fillInfo(List<ITvShow> tvShows) {
+        adapter.swap(tvShows);
     }
 }

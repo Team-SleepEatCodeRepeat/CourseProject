@@ -13,35 +13,36 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.telerikproject.tvshowcalendar.R;
+import com.telerikproject.tvshowcalendar.models.ITvShow;
 import com.telerikproject.tvshowcalendar.views.serialInfo.SerialInfoActivity;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class GridAdapter extends BaseAdapter {
 
-    ArrayList<String> titles;
-    ArrayList<String> ratings;
-    Context context;
-    ArrayList<String> images;
-    ArrayList<String> ids;
+    private static LayoutInflater inflater;
 
-    private static LayoutInflater inflater = null;
+    private final Context context;
+    private List<ITvShow> tvShows;
 
     //TODO  setVisibility on Imageviews with id isWatched and IsFollowed
-    public GridAdapter(Activity choosenActivity, ArrayList<String> moviesTitles, ArrayList<String> moviesRating, ArrayList<String> moviesImages, ArrayList<String> ids) {
-        titles = moviesTitles;
-        ratings = moviesRating;
-        context = choosenActivity;
-        images = moviesImages;
-        this.ids = ids;
+    public GridAdapter(Context context, List<ITvShow> tvShows) {
+        this.context = context;
+        this.tvShows = tvShows;
 
         inflater = (LayoutInflater) context.
                 getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
+    public void swap(List<ITvShow> tvShows) {
+        this.tvShows = tvShows;
+        notifyDataSetChanged();
+    }
+
     @Override
     public int getCount() {
-        return titles.size();
+        return tvShows.size();
     }
 
     @Override
@@ -70,22 +71,23 @@ public class GridAdapter extends BaseAdapter {
         holder.images = (ImageView) rowView.findViewById(R.id.iv_movie_image);
         holder.ratings = (TextView) rowView.findViewById(R.id.tv_seasons);
 
-        holder.titles.setText(titles.get(position));
-        Glide.with(context).load(images.get(position)).into(holder.images);
-        holder.ratings.setText(ratings.get(position));
+        final ITvShow currentTvShow = tvShows.get(position);
+
+        holder.titles.setText(currentTvShow.getName());
+        Glide.with(context).load(currentTvShow.getPoster()).into(holder.images);
+        holder.ratings.setText(currentTvShow.getVote());
 
         rowView.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, SerialInfoActivity.class);
-                String id = ids.get(position);
-                intent.putExtra("id", ids.get(position));
+                String id = currentTvShow.getId();
+                intent.putExtra("id", currentTvShow.getId());
                 context.startActivity(intent);
             }
         });
 
         return rowView;
     }
-
 }

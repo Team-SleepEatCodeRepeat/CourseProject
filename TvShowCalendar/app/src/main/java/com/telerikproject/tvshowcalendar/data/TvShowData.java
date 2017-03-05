@@ -3,6 +3,7 @@ package com.telerikproject.tvshowcalendar.data;
 import com.telerikproject.tvshowcalendar.constants.base.ITheMovieDbConstants;
 import com.telerikproject.tvshowcalendar.models.detailedTvShow.base.IDetailedTvShowModel;
 import com.telerikproject.tvshowcalendar.models.popularTvShows.base.IPopularTvShowsModel;
+import com.telerikproject.tvshowcalendar.models.popularTvShows.base.ITvShowModel;
 import com.telerikproject.tvshowcalendar.models.season.base.ITvShowSeasonModel;
 import com.telerikproject.tvshowcalendar.data.base.ITvShowData;
 import com.telerikproject.tvshowcalendar.utils.base.IJsonParser;
@@ -77,6 +78,20 @@ public class TvShowData implements ITvShowData {
                         ITvShowSeasonModel season = jsonParser.fromJson(respBody.string(), tvShowSeasonModelType);
 
                         return season;
+                    }
+                });
+    }
+
+    @Override
+    public Observable<IPopularTvShowsModel> getTvShowsByQuery(String query) {
+        return okHttpRequester.get(tmdbConstants.getSearchTvShowUrl(query))
+                .map(new Function<IOkHttpResponse, IPopularTvShowsModel>() {
+                    @Override
+                    public IPopularTvShowsModel apply(IOkHttpResponse okHttpResponse) throws Exception {
+                        ResponseBody respBody = okHttpResponse.getBody();
+                        IPopularTvShowsModel tvShows = jsonParser.fromJson(respBody.string(), popularTvShowsType);
+
+                        return tvShows;
                     }
                 });
     }
