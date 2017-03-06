@@ -10,4 +10,6 @@ public interface ITheMovieDbConstants {
     String getSeasonDetailsUrl(String id, int seasonNumber);
 
     String getEpisodeDetailsUrl(String id, int seasonNumber, int episodeNumber);
+
+    String getImageUrl();
 }

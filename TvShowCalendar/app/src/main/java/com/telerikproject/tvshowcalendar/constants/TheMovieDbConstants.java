@@ -8,6 +8,7 @@ public final class TheMovieDbConstants implements ITheMovieDbConstants {
     private static String tMDBApiUrl = "https://api.themoviedb.org/3";
     private static String tvShowsBaseUrl = String.format("%s/tv", tMDBApiUrl);
     private static String popularTvShows = String.format("%s/tv/popular%s", tMDBApiUrl, tMDBApiKey);
+    private static String imageUrl = "https://image.tmdb.org/t/p/w640";
 
 
     @Override
@@ -33,6 +34,11 @@ public final class TheMovieDbConstants implements ITheMovieDbConstants {
     @Override
     public String getEpisodeDetailsUrl(String id, int seasonNumber, int episodeNumber) {
         return String.format("%s%s/season/%s/episode/%s%s", tvShowsBaseUrl, id, seasonNumber, episodeNumber, tMDBApiKey);
+    }
+
+    @Override
+    public String getImageUrl() {
+        return imageUrl;
     }
 
 
