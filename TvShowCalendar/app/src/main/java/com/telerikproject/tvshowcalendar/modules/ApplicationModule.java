@@ -24,9 +24,9 @@ import com.telerikproject.tvshowcalendar.data.TvShowData;
 import com.telerikproject.tvshowcalendar.data.base.ITvShowData;
 import com.telerikproject.tvshowcalendar.modules.annotations.UserModel;
 import com.telerikproject.tvshowcalendar.utils.GsonParser;
-import com.telerikproject.tvshowcalendar.utils.OkHttpRequester;
+import com.telerikproject.tvshowcalendar.utils.HttpRequester;
+import com.telerikproject.tvshowcalendar.utils.base.IHttpRequester;
 import com.telerikproject.tvshowcalendar.utils.base.IJsonParser;
-import com.telerikproject.tvshowcalendar.utils.base.IOkHttpRequester;
 import com.telerikproject.tvshowcalendar.utils.userSession.UserSession;
 import com.telerikproject.tvshowcalendar.utils.userSession.base.IUserSession;
 
@@ -55,8 +55,8 @@ public class ApplicationModule {
 
     @Inject
     @Provides
-    IOkHttpRequester provideOkHttpRequester(IHttpResponseFactory httpResponseFactory) {
-        return new OkHttpRequester(httpResponseFactory);
+    IHttpRequester provideOkHttpRequester(IHttpResponseFactory httpResponseFactory) {
+        return new HttpRequester(httpResponseFactory);
     }
 
 
@@ -102,7 +102,7 @@ public class ApplicationModule {
 
     @Inject
     @Provides
-    ITvShowData provideTvShowData(IOkHttpRequester okHttpRequester, IJsonParser jsonParser,
+    ITvShowData provideTvShowData(IHttpRequester okHttpRequester, IJsonParser jsonParser,
                                   @TvShowModel Type tvShowModelType, @PopularTvShowsResultModel Type TopTvShows,
                                   @DetailedTvShowModel Type detailedTvShowModelType, @TvShowSeasonModel Type tvShowSeasonModelType,
                                   ITheMovieDbConstants tmdbConstants) {
@@ -111,7 +111,7 @@ public class ApplicationModule {
 
     @Inject
     @Provides
-    IUserData provideUserData(IOkHttpRequester okHttpRequester, IJsonParser jsonParser,
+    IUserData provideUserData(IHttpRequester okHttpRequester, IJsonParser jsonParser,
                               IApiConstants apiConstants, IUserSession userSession, @UserModel Type userModelType) {
         return new UserData(okHttpRequester, jsonParser, userSession, apiConstants, userModelType);
     }

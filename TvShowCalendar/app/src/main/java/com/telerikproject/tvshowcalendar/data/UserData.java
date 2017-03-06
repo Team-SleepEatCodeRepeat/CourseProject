@@ -3,9 +3,9 @@ package com.telerikproject.tvshowcalendar.data;
 import com.telerikproject.tvshowcalendar.constants.base.IApiConstants;
 import com.telerikproject.tvshowcalendar.data.base.IUserData;
 import com.telerikproject.tvshowcalendar.models.user.base.IUserModel;
+import com.telerikproject.tvshowcalendar.utils.base.IHttpRequester;
 import com.telerikproject.tvshowcalendar.utils.base.IJsonParser;
-import com.telerikproject.tvshowcalendar.utils.base.IOkHttpRequester;
-import com.telerikproject.tvshowcalendar.utils.base.IOkHttpResponse;
+import com.telerikproject.tvshowcalendar.utils.base.IHttpResponse;
 import com.telerikproject.tvshowcalendar.utils.userSession.base.IUserSession;
 
 import java.lang.reflect.Type;
@@ -19,7 +19,7 @@ import io.reactivex.functions.Function;
 
 public class UserData implements IUserData {
 
-    private final IOkHttpRequester okHttpRequester;
+    private final IHttpRequester okHttpRequester;
     private final IJsonParser jsonParser;
     private final Type userModelType;
     private final IUserSession userSession;
@@ -27,7 +27,7 @@ public class UserData implements IUserData {
 
 
     @Inject
-    public UserData(IOkHttpRequester okHttpRequester, IJsonParser jsonParser,
+    public UserData(IHttpRequester okHttpRequester, IJsonParser jsonParser,
                     IUserSession userSession, IApiConstants apiConstants, Type userModelType) {
         this.okHttpRequester = okHttpRequester;
         this.jsonParser = jsonParser;
@@ -44,9 +44,9 @@ public class UserData implements IUserData {
         user.put("password", password);
 
         return okHttpRequester.post(apiConstants.getLoginUrl(), user)
-                .map(new Function<IOkHttpResponse, IUserModel>() {
+                .map(new Function<IHttpResponse, IUserModel>() {
                     @Override
-                    public IUserModel apply(IOkHttpResponse okHttpResponse) throws Exception {
+                    public IUserModel apply(IHttpResponse okHttpResponse) throws Exception {
                         String respBody = okHttpResponse.getBody();
                         String userJson = jsonParser.getDirectMember(respBody, "user");
                         IUserModel user = jsonParser.fromJson(userJson, userModelType);
@@ -65,9 +65,9 @@ public class UserData implements IUserData {
         user.put("password", password);
 
         return okHttpRequester.post(apiConstants.getRegisterUrl(), user)
-                .map(new Function<IOkHttpResponse, IUserModel>() {
+                .map(new Function<IHttpResponse, IUserModel>() {
                     @Override
-                    public IUserModel apply(IOkHttpResponse okHttpResponse) throws Exception {
+                    public IUserModel apply(IHttpResponse okHttpResponse) throws Exception {
                         String respBody = okHttpResponse.getBody();
                         String userJson = jsonParser.getDirectMember(respBody, "result");
                         IUserModel user = jsonParser.fromJson(userJson, userModelType);

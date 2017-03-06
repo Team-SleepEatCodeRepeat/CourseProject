@@ -6,12 +6,11 @@ import com.telerikproject.tvshowcalendar.models.TvShow;
 import com.telerikproject.tvshowcalendar.models.detailedTvShow.base.IDetailedTvShowModel;
 import com.telerikproject.tvshowcalendar.models.popularTvShows.TvShowModel;
 import com.telerikproject.tvshowcalendar.models.popularTvShows.base.IPopularTvShowsModel;
-import com.telerikproject.tvshowcalendar.models.popularTvShows.base.ITvShowModel;
 import com.telerikproject.tvshowcalendar.models.season.base.ITvShowSeasonModel;
 import com.telerikproject.tvshowcalendar.data.base.ITvShowData;
 import com.telerikproject.tvshowcalendar.utils.base.IJsonParser;
-import com.telerikproject.tvshowcalendar.utils.base.IOkHttpRequester;
-import com.telerikproject.tvshowcalendar.utils.base.IOkHttpResponse;
+import com.telerikproject.tvshowcalendar.utils.base.IHttpRequester;
+import com.telerikproject.tvshowcalendar.utils.base.IHttpResponse;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -21,11 +20,10 @@ import javax.inject.Inject;
 
 import io.reactivex.Observable;
 import io.reactivex.functions.Function;
-import okhttp3.ResponseBody;
 
 public class TvShowData implements ITvShowData {
 
-    private final IOkHttpRequester okHttpRequester;
+    private final IHttpRequester okHttpRequester;
     private final IJsonParser jsonParser;
     private final ITheMovieDbConstants tmdbConstants;
     private final Type tvShowModelType;
@@ -34,7 +32,7 @@ public class TvShowData implements ITvShowData {
     private final Type tvShowSeasonModelType;
 
     @Inject
-    public TvShowData(IOkHttpRequester okHttpRequester, IJsonParser jsonParser, Type tvShowModelType, Type popularTvShowsType,
+    public TvShowData(IHttpRequester okHttpRequester, IJsonParser jsonParser, Type tvShowModelType, Type popularTvShowsType,
                       Type detailedTvShowType, Type tvShowSeasonModelType, ITheMovieDbConstants tmdbConstants) {
         this.okHttpRequester = okHttpRequester;
         this.jsonParser = jsonParser;
@@ -48,9 +46,9 @@ public class TvShowData implements ITvShowData {
     @Override
     public Observable<List<ITvShow>> getTopTvShows() {
         return okHttpRequester.get(tmdbConstants.getPopularTvShowsUrl())
-                .map(new Function<IOkHttpResponse, List<ITvShow>>() {
+                .map(new Function<IHttpResponse, List<ITvShow>>() {
                     @Override
-                    public List<ITvShow> apply(IOkHttpResponse okHttpResponse) throws Exception {
+                    public List<ITvShow> apply(IHttpResponse okHttpResponse) throws Exception {
                         String respBody = okHttpResponse.getBody();
                         IPopularTvShowsModel tvShows = jsonParser.fromJson(respBody, popularTvShowsType);
 
@@ -63,9 +61,9 @@ public class TvShowData implements ITvShowData {
     @Override
     public Observable<IDetailedTvShowModel> getTvShow(String id) {
         return okHttpRequester.get(tmdbConstants.getTvDetailsUrl(id))
-                .map(new Function<IOkHttpResponse, IDetailedTvShowModel>() {
+                .map(new Function<IHttpResponse, IDetailedTvShowModel>() {
                     @Override
-                    public IDetailedTvShowModel apply(IOkHttpResponse okHttpResponse) throws Exception {
+                    public IDetailedTvShowModel apply(IHttpResponse okHttpResponse) throws Exception {
                         String respBody = okHttpResponse.getBody();
                         IDetailedTvShowModel tvShow = jsonParser.fromJson(respBody, detailedTvShowModelType);
                         return tvShow;
@@ -77,9 +75,9 @@ public class TvShowData implements ITvShowData {
     @Override
     public Observable<ITvShowSeasonModel> getTvShowSeasonEpisodes(final String seasonNumber, final String tvShowId) {
         return okHttpRequester.get(tmdbConstants.getSeasonDetailsUrl(tvShowId, Integer.valueOf(seasonNumber)))
-                .map(new Function<IOkHttpResponse, ITvShowSeasonModel>() {
+                .map(new Function<IHttpResponse, ITvShowSeasonModel>() {
                     @Override
-                    public ITvShowSeasonModel apply(IOkHttpResponse okHttpResponse) throws Exception {
+                    public ITvShowSeasonModel apply(IHttpResponse okHttpResponse) throws Exception {
                         String respBody = okHttpResponse.getBody();
                         ITvShowSeasonModel season = jsonParser.fromJson(respBody, tvShowSeasonModelType);
 
@@ -91,9 +89,9 @@ public class TvShowData implements ITvShowData {
     @Override
     public Observable<List<ITvShow>> getTvShowsByQuery(String query) {
         return okHttpRequester.get(tmdbConstants.getSearchTvShowUrl(query))
-                .map(new Function<IOkHttpResponse, List<ITvShow>>() {
+                .map(new Function<IHttpResponse, List<ITvShow>>() {
                     @Override
-                    public List<ITvShow> apply(IOkHttpResponse okHttpResponse) throws Exception {
+                    public List<ITvShow> apply(IHttpResponse okHttpResponse) throws Exception {
                         String respBody = okHttpResponse.getBody();
                         IPopularTvShowsModel tvShows = jsonParser.fromJson(respBody, popularTvShowsType);
 

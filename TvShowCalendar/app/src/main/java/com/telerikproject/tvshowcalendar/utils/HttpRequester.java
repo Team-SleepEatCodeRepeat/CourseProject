@@ -1,8 +1,8 @@
 package com.telerikproject.tvshowcalendar.utils;
 
 import com.telerikproject.tvshowcalendar.factories.base.IHttpResponseFactory;
-import com.telerikproject.tvshowcalendar.utils.base.IOkHttpRequester;
-import com.telerikproject.tvshowcalendar.utils.base.IOkHttpResponse;
+import com.telerikproject.tvshowcalendar.utils.base.IHttpRequester;
+import com.telerikproject.tvshowcalendar.utils.base.IHttpResponse;
 
 import java.io.IOException;
 import java.util.Map;
@@ -18,22 +18,22 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class OkHttpRequester implements IOkHttpRequester {
+public class HttpRequester implements IHttpRequester {
 
     private final IHttpResponseFactory httpResponseFactory;
     private final OkHttpClient okHttpClient;
 
     @Inject
-    public OkHttpRequester(IHttpResponseFactory HttpResponseFactory) {
+    public HttpRequester(IHttpResponseFactory HttpResponseFactory) {
         this.httpResponseFactory = HttpResponseFactory;
         this.okHttpClient = new OkHttpClient();
     }
 
     @Override
-    public Observable<IOkHttpResponse> get(final String url) {
-            return Observable.defer(new Callable<ObservableSource<? extends IOkHttpResponse>>() {
+    public Observable<IHttpResponse> get(final String url) {
+            return Observable.defer(new Callable<ObservableSource<? extends IHttpResponse>>() {
                 @Override
-                public ObservableSource<? extends IOkHttpResponse> call() throws Exception {
+                public ObservableSource<? extends IHttpResponse> call() throws Exception {
                     Request request = new Request.Builder().url(url).build();
 
                     return createResponse(request);
@@ -42,10 +42,10 @@ public class OkHttpRequester implements IOkHttpRequester {
     }
 
     @Override
-    public Observable<IOkHttpResponse> post(final String url, final Map<String, String> body) {
-        return Observable.defer(new Callable<ObservableSource<? extends IOkHttpResponse>>() {
+    public Observable<IHttpResponse> post(final String url, final Map<String, String> body) {
+        return Observable.defer(new Callable<ObservableSource<? extends IHttpResponse>>() {
             @Override
-            public ObservableSource<? extends IOkHttpResponse> call() throws Exception {
+            public ObservableSource<? extends IHttpResponse> call() throws Exception {
                 RequestBody requestBody = createRequestBody(body);
 
                 Request request = new Request.Builder()
@@ -58,11 +58,11 @@ public class OkHttpRequester implements IOkHttpRequester {
         });
     }
 
-    private Observable<IOkHttpResponse> createResponse(Request request) {
+    private Observable<IHttpResponse> createResponse(Request request) {
         try {
             Response response = this.okHttpClient.newCall(request).execute();
 
-            IOkHttpResponse parsedResponse = httpResponseFactory.createResponse(response.body().string());
+            IHttpResponse parsedResponse = httpResponseFactory.createResponse(response.body().string());
 
             return Observable.just(parsedResponse);
 

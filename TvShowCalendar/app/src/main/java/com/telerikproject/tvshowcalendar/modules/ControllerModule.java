@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.support.v4.app.FragmentManager;
 
+import com.telerikproject.tvshowcalendar.constants.base.ITheMovieDbConstants;
 import com.telerikproject.tvshowcalendar.data.base.ITvShowData;
 import com.telerikproject.tvshowcalendar.data.base.IUserData;
 import com.telerikproject.tvshowcalendar.models.user.base.IUserModel;
@@ -57,8 +58,8 @@ public class ControllerModule {
 
     @Inject
     @Provides
-    ISerialInfoContract.Presenter provideSerialInfoContentPresenter(ITvShowData tvShowData) {
-        return new SerialInfoContentPresenter(tvShowData);
+    ISerialInfoContract.Presenter provideSerialInfoContentPresenter(ITvShowData tvShowData, ITheMovieDbConstants tmdbConstants) {
+        return new SerialInfoContentPresenter(tvShowData, tmdbConstants);
     }
 
 

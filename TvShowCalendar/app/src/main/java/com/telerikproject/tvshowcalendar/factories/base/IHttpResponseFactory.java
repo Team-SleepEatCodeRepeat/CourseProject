@@ -1,9 +1,7 @@
 package com.telerikproject.tvshowcalendar.factories.base;
 
-import com.telerikproject.tvshowcalendar.utils.base.IOkHttpResponse;
-
-import okhttp3.ResponseBody;
+import com.telerikproject.tvshowcalendar.utils.base.IHttpResponse;
 
 public interface IHttpResponseFactory {
-    IOkHttpResponse createResponse(final String body);
+    IHttpResponse createResponse(final String body);
 }

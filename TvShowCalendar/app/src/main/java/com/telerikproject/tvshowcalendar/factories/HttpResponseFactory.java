@@ -1,15 +1,13 @@
 package com.telerikproject.tvshowcalendar.factories;
 
 import com.telerikproject.tvshowcalendar.factories.base.IHttpResponseFactory;
-import com.telerikproject.tvshowcalendar.utils.base.IOkHttpResponse;
-
-import okhttp3.ResponseBody;
+import com.telerikproject.tvshowcalendar.utils.base.IHttpResponse;
 
 public class HttpResponseFactory implements IHttpResponseFactory {
 
     @Override
-    public IOkHttpResponse createResponse(final String body) {
-        return new IOkHttpResponse() {
+    public IHttpResponse createResponse(final String body) {
+        return new IHttpResponse() {
 
             @Override
             public String getBody() {
