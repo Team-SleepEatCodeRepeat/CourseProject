@@ -15,12 +15,12 @@ import java.util.ArrayList;
 
 public class EpisodeListAdapter extends BaseAdapter {
 
-    ArrayList<String> titles;
-    ArrayList<String> episodeNumbers;
-    ArrayList<String> datesRelease;
-    ArrayList<String> yearsRelease;
+    private ArrayList<String> titles;
+    private ArrayList<String> episodeNumbers;
+    private ArrayList<String> datesRelease;
+    private ArrayList<String> yearsRelease;
 
-    Context context;
+    private Context context;
 
     private static LayoutInflater inflater = null;
 

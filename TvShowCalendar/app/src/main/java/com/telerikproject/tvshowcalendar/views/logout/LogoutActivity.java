@@ -7,6 +7,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Toast;
 
 import com.telerikproject.tvshowcalendar.R;
 import com.telerikproject.tvshowcalendar.views.home.HomeActivity;
@@ -17,6 +18,7 @@ public class LogoutActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_logout);
+        Toast.makeText(this, "Logout successful!", Toast.LENGTH_SHORT).show();
 
         Intent intent = new Intent(this, HomeActivity.class);
         startActivity(intent);
