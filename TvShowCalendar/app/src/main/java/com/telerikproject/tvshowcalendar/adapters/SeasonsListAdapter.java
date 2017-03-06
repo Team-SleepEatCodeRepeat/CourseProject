@@ -18,7 +18,7 @@ public class SeasonsListAdapter extends BaseAdapter {
 
     private final Activity mActivity;
 
-    ArrayList<Integer> seasons;
+    private ArrayList<Integer> seasons;
     private final String tvShowId;
 
     private LayoutInflater inflater = null;

@@ -4,6 +4,8 @@ import android.app.NotificationManager;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +13,7 @@ import android.support.v7.app.NotificationCompat;
 import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.widget.Toast;
 
 import com.telerikproject.tvshowcalendar.BaseApplication;
 import com.telerikproject.tvshowcalendar.R;
@@ -32,6 +35,9 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        if(!isOnline()) {
+            Toast.makeText(this, "Network connection is required", Toast.LENGTH_LONG).show();
+        }
         this.injectDependencies();
 
         content = (HomeContentFragment) fragmentManager.findFragmentById(R.id.fragment_home_content);
@@ -80,5 +86,12 @@ public class HomeActivity extends AppCompatActivity {
                 .getAppComponent()
                 .getControllerComponent(new ControllerModule(this, getSupportFragmentManager()))
                 .inject(this);
+    }
+
+    public boolean isOnline() {
+        ConnectivityManager cm =
+                (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        return netInfo != null && netInfo.isConnectedOrConnecting();
     }
 }
