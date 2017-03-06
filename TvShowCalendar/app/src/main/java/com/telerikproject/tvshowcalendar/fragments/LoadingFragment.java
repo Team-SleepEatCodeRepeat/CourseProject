@@ -26,6 +26,7 @@ public class LoadingFragment implements ILoadingFragment {
 
     public void hide() {
         this.loadingDialog.hide();
+        this.loadingDialog.dismiss();
     }
 
     public ILoadingFragment create(Context context) {

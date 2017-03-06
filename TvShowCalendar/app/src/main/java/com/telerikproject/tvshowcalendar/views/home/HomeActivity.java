@@ -40,21 +40,8 @@ public class HomeActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         handleSearchQuery(intent);
-//        notifyNewEpisode("The Originals" , "17 Mar. 2017");
     }
 
-    public void notifyNewEpisode(String title, String date) {
-        NotificationCompat.Builder b = new NotificationCompat.Builder(this);
-        b.setAutoCancel(true)
-                .setDefaults(NotificationCompat.DEFAULT_VIBRATE)
-                .setWhen(System.currentTimeMillis())
-                .setSmallIcon(R.drawable.ic_notification)
-                .setContentTitle("New episode of " + title)
-                .setContentText("Starts on " + date);
-
-        NotificationManager nm = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
-        nm.notify(1, b.build());
-    }
 
     @Override
     protected void onNewIntent(Intent intent) {
@@ -78,7 +65,7 @@ public class HomeActivity extends AppCompatActivity {
         inflater.inflate(R.menu.menu, menu);
 
         SearchManager searchManager =
-                (SearchManager) getSystemService(this.SEARCH_SERVICE);
+                (SearchManager) getSystemService(SEARCH_SERVICE);
         SearchView searchView =
                 (SearchView) menu.findItem(R.id.search).getActionView();
         searchView.setSearchableInfo(
