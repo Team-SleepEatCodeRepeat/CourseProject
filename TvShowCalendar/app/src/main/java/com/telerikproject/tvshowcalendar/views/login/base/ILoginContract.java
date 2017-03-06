@@ -14,6 +14,10 @@ public interface ILoginContract {
         void hideLoading();
 
         void redirectToHome();
+
+        void loginSuccessful(String username);
+
+        void loginFailed();
     }
 
     interface Presenter extends BasePresenter<View> {

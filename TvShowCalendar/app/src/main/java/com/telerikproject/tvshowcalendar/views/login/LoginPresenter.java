@@ -46,12 +46,14 @@ public class LoginPresenter implements ILoginContract.Presenter {
 
                     @Override
                     public void onNext(IUserModel value) {
+                        view.loginSuccessful(value.getUsername());
                     }
 
                     @Override
                     public void onError(Throwable e) {
 
                         Throwable c = e;
+                        view.loginFailed();
                         view.hideLoading();
                     }
 

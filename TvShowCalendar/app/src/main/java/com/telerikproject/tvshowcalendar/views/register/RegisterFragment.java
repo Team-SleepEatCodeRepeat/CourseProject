@@ -22,9 +22,6 @@ import com.telerikproject.tvshowcalendar.views.register.base.IRegisterContract;
 
 import javax.inject.Inject;
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class RegisterFragment extends Fragment implements IRegisterContract.View {
 
 

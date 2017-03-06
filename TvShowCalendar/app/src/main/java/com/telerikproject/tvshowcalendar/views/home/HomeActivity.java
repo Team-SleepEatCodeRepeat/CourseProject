@@ -44,7 +44,7 @@ public class HomeActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         handleSearchQuery(intent);
-        notifyNewEpisode("The Originals" , "17 Mar. 2017");
+//        notifyNewEpisode("The Originals" , "17 Mar. 2017");
     }
 
     public void notifyNewEpisode(String title, String date) {

@@ -139,4 +139,14 @@ public class LoginFragment extends Fragment implements ILoginContract.View {
         Intent intent = new Intent(getActivity(), HomeActivity.class);
         startActivity(intent);
     }
+
+    @Override
+    public void loginSuccessful(String username) {
+        Toast.makeText(getActivity(), username + " successfully logged in!", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void loginFailed() {
+        Toast.makeText(getActivity(), "Wrong username or password", Toast.LENGTH_SHORT).show();
+    }
 }
