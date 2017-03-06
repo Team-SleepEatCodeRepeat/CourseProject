@@ -83,7 +83,7 @@ public class GridAdapter extends BaseAdapter {
             public void onClick(View v) {
                 Intent intent = new Intent(context, SerialInfoActivity.class);
                 String id = currentTvShow.getId();
-                intent.putExtra("id", currentTvShow.getId());
+                intent.putExtra("id", id);
                 context.startActivity(intent);
             }
         });

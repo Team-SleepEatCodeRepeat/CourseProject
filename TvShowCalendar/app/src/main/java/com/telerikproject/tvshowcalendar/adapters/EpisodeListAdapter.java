@@ -49,7 +49,7 @@ public class EpisodeListAdapter extends BaseAdapter {
         return position;
     }
 
-    public class Holder {
+    private class Holder {
         TextView episodeNumber;
         TextView titles;
         TextView datesRelease;

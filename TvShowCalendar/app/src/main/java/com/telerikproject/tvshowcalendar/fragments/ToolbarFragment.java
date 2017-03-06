@@ -42,7 +42,6 @@ import javax.inject.Inject;
 public class ToolbarFragment extends Fragment {
 
     Toolbar toolbar;
-    private AppCompatActivity currentActivity;
 
     @Inject
     FragmentManager fragmentManager;
@@ -61,7 +60,7 @@ public class ToolbarFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_toolbar, container, false);
         this.injectDependencies();
 
-        currentActivity = (AppCompatActivity) getActivity();
+        AppCompatActivity currentActivity = (AppCompatActivity) getActivity();
         toolbar = (Toolbar) view.findViewById(R.id.toolbar);
         currentActivity.setSupportActionBar(toolbar);
 
@@ -113,7 +112,6 @@ public class ToolbarFragment extends Fragment {
                             case 2:
                                 Intent profile = new Intent(getActivity(), ProfileActivity.class);
                                 startActivity(profile);
-                                logout.withName("test");
                                 break;
                             case 3:
                                 if(userSession.isUserLoggedIn()) {
