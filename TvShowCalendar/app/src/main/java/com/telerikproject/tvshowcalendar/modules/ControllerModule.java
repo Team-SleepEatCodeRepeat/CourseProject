@@ -13,6 +13,8 @@ import com.telerikproject.tvshowcalendar.views.home.HomeContentPresenter;
 import com.telerikproject.tvshowcalendar.views.home.base.IHomeContract;
 import com.telerikproject.tvshowcalendar.views.login.LoginPresenter;
 import com.telerikproject.tvshowcalendar.views.login.base.ILoginContract;
+import com.telerikproject.tvshowcalendar.views.register.RegisterPresenter;
+import com.telerikproject.tvshowcalendar.views.register.base.IRegisterContract;
 import com.telerikproject.tvshowcalendar.views.serialInfo.SerialInfoContentPresenter;
 import com.telerikproject.tvshowcalendar.views.serialInfo.base.ISerialInfoContract;
 
@@ -70,5 +72,11 @@ public class ControllerModule {
     @Provides
     ILoginContract.Presenter provideLoginPresenter(IUserData userData) {
         return new LoginPresenter(userData);
+    }
+
+    @Inject
+    @Provides
+    IRegisterContract.Presenter provideRegisterPresenter(IUserData userData) {
+        return new RegisterPresenter(userData);
     }
 }

@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.telerikproject.tvshowcalendar.BaseApplication;
@@ -18,6 +19,7 @@ import com.telerikproject.tvshowcalendar.fragments.ILoadingFragment;
 import com.telerikproject.tvshowcalendar.modules.ControllerModule;
 import com.telerikproject.tvshowcalendar.views.home.HomeActivity;
 import com.telerikproject.tvshowcalendar.views.login.base.ILoginContract;
+import com.telerikproject.tvshowcalendar.views.register.RegisterActivity;
 
 import javax.inject.Inject;
 
@@ -55,11 +57,18 @@ public class LoginFragment extends Fragment implements ILoginContract.View {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(), usernameET.getText(), Toast.LENGTH_SHORT).show();
                 String username = usernameET.getText().toString();
                 String password = passwordET.getText().toString();
 
                 presenter.login(username, password);
+            }
+        });
+
+        TextView register = (TextView) view.findViewById(R.id.sign_up);
+        register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                redirectToRegister();
             }
         });
 
@@ -118,6 +127,11 @@ public class LoginFragment extends Fragment implements ILoginContract.View {
     @Override
     public void hideLoading() {
         this.loading.hide();
+    }
+
+    public void redirectToRegister() {
+        Intent intent = new Intent(getActivity(), RegisterActivity.class);
+        startActivity(intent);
     }
 
     @Override
