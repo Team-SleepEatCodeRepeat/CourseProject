@@ -36,8 +36,6 @@ public class HomeContentPresenter implements IHomeContract.Presenter {
 
     @Override
     public void getTopTvShows() {
-        final ArrayList<ITvShow> parsedTvShows = new ArrayList<>();
-
         tvShowData.getTopTvShows()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -72,9 +70,6 @@ public class HomeContentPresenter implements IHomeContract.Presenter {
         if (query == null || query.isEmpty()) {
             return;
         }
-
-        final ArrayList<ITvShow> parsedTvShows = new ArrayList<>();
-
         tvShowData.getTvShowsByQuery(query)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

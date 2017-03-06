@@ -23,14 +23,11 @@ public class SerialInfoActivity extends AppCompatActivity {
     ISerialInfoContract.Presenter contentPresenter;
 
     private String id;
-    private ILoadingFragment loading;
     BackToolbarFragment backFragment;
 
     @Inject
     FragmentManager fragmentManager;
 
-    @Inject
-    ILoadingFactory loadingFactory;
 
     private SerialInfoContentFragment content;
 
@@ -45,7 +42,6 @@ public class SerialInfoActivity extends AppCompatActivity {
         content.setPresenter(contentPresenter);
 
         this.id = getIntent().getStringExtra("id");
-        this.loading = loadingFactory.create();
 
         backFragment = (BackToolbarFragment) fragmentManager.findFragmentById(R.id.back_toolbar);
 
@@ -85,7 +81,7 @@ public class SerialInfoActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        this.contentPresenter.getSerial(this.id, this.loading);
+        this.contentPresenter.getSerial(this.id);
         backFragment.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

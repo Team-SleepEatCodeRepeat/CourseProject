@@ -9,10 +9,13 @@ public interface ISerialInfoContract {
 
         void setTitle(String title);
         void fillInfo(String tvRating, String image, String description, int numOfSeasons, String tvShowId);
+
+        void showLoading();
+        void hideLoading();
     }
 
     interface Presenter extends BasePresenter<ISerialInfoContract.View> {
 
-        void getSerial(String id, ILoadingFragment loading);
+        void getSerial(String id);
     }
 }

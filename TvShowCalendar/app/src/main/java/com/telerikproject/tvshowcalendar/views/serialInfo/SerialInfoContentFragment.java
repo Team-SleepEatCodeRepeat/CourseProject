@@ -13,19 +13,30 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.telerikproject.tvshowcalendar.BaseApplication;
 import com.telerikproject.tvshowcalendar.R;
 import com.telerikproject.tvshowcalendar.adapters.SeasonsListAdapter;
+import com.telerikproject.tvshowcalendar.factories.base.ILoadingFactory;
+import com.telerikproject.tvshowcalendar.fragments.base.ILoadingFragment;
+import com.telerikproject.tvshowcalendar.modules.ControllerModule;
 import com.telerikproject.tvshowcalendar.views.serialInfo.base.ISerialInfoContract;
+
+import javax.inject.Inject;
 
 public class SerialInfoContentFragment extends Fragment implements ISerialInfoContract.View {
 
     private ISerialInfoContract.Presenter presenter;
+
+    @Inject
+    ILoadingFactory loadingFactory;
 
     View view;
     TextView tvRating;
     ImageView movieImage;
     TextView tvDescription;
     ListView seasons;
+
+    private ILoadingFragment loading;
 
     public SerialInfoContentFragment() {
         // Required empty public constructor
@@ -35,10 +46,12 @@ public class SerialInfoContentFragment extends Fragment implements ISerialInfoCo
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_serial_info_content, container, false);
+        this.injectDependencies();
 
         this.tvRating = (TextView) view.findViewById(R.id.tv_rating);
         this.movieImage = (ImageView) view.findViewById(R.id.movie_image);
         this.tvDescription = (TextView) view.findViewById(R.id.tv_description);
+        this.loading = loadingFactory.create();
 
         seasons = (ListView) view.findViewById(R.id.lv_seasons);
         return view;
@@ -66,6 +79,16 @@ public class SerialInfoContentFragment extends Fragment implements ISerialInfoCo
         justifyListViewHeightBasedOnChildren(seasons);
     }
 
+    @Override
+    public void showLoading() {
+        this.loading.show();
+    }
+
+    @Override
+    public void hideLoading() {
+        this.loading.hide();
+    }
+
     public static void justifyListViewHeightBasedOnChildren (ListView listView) {
 
         ListAdapter adapter = listView.getAdapter();
@@ -85,5 +108,15 @@ public class SerialInfoContentFragment extends Fragment implements ISerialInfoCo
         par.height = totalHeight + (listView.getDividerHeight() * (adapter.getCount() - 1));
         listView.setLayoutParams(par);
         listView.requestLayout();
+    }
+
+    private void injectDependencies() {
+        BaseApplication
+                .from(getContext())
+                .getAppComponent()
+                .getControllerComponent(new ControllerModule(
+                        getActivity(), getFragmentManager()
+                ))
+                .inject(this);
     }
 }
