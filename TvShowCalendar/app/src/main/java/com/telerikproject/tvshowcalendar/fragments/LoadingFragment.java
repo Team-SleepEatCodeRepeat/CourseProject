@@ -3,6 +3,8 @@ package com.telerikproject.tvshowcalendar.fragments;
 import android.app.ProgressDialog;
 import android.content.Context;
 
+import com.telerikproject.tvshowcalendar.fragments.base.ILoadingFragment;
+
 public class LoadingFragment implements ILoadingFragment {
 
     private ProgressDialog loadingDialog;

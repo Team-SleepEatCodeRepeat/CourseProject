@@ -1,10 +1,8 @@
 package com.telerikproject.tvshowcalendar.views.serialInfo.base;
 
-import com.telerikproject.tvshowcalendar.fragments.ILoadingFragment;
+import com.telerikproject.tvshowcalendar.fragments.base.ILoadingFragment;
 import com.telerikproject.tvshowcalendar.views.base.BasePresenter;
 import com.telerikproject.tvshowcalendar.views.base.BaseView;
-
-import java.util.ArrayList;
 
 public interface ISerialInfoContract {
     interface View extends BaseView<ISerialInfoContract.Presenter> {

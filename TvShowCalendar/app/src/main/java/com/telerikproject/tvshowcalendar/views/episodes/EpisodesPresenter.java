@@ -1,6 +1,6 @@
 package com.telerikproject.tvshowcalendar.views.episodes;
 
-import com.telerikproject.tvshowcalendar.fragments.ILoadingFragment;
+import com.telerikproject.tvshowcalendar.fragments.base.ILoadingFragment;
 import com.telerikproject.tvshowcalendar.models.episode.TvShowEpisodeModel;
 import com.telerikproject.tvshowcalendar.models.season.base.ITvShowSeasonModel;
 import com.telerikproject.tvshowcalendar.data.base.ITvShowData;

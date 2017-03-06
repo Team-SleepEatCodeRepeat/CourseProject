@@ -1,9 +1,7 @@
 package com.telerikproject.tvshowcalendar.views.serialInfo;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.widget.TextViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
@@ -17,13 +15,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.telerikproject.tvshowcalendar.R;
 import com.telerikproject.tvshowcalendar.adapters.SeasonsListAdapter;
-import com.telerikproject.tvshowcalendar.fragments.ILoadingFragment;
 import com.telerikproject.tvshowcalendar.views.serialInfo.base.ISerialInfoContract;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.inject.Inject;
 
 public class SerialInfoContentFragment extends Fragment implements ISerialInfoContract.View {
 

@@ -13,7 +13,7 @@ import com.telerikproject.tvshowcalendar.data.UserData;
 import com.telerikproject.tvshowcalendar.data.base.IUserData;
 import com.telerikproject.tvshowcalendar.factories.HttpResponseFactory;
 import com.telerikproject.tvshowcalendar.factories.base.IHttpResponseFactory;
-import com.telerikproject.tvshowcalendar.fragments.ILoadingFragment;
+import com.telerikproject.tvshowcalendar.fragments.base.ILoadingFragment;
 import com.telerikproject.tvshowcalendar.fragments.LoadingFragment;
 import com.telerikproject.tvshowcalendar.modules.annotations.ApplicationContext;
 import com.telerikproject.tvshowcalendar.modules.annotations.DetailedTvShowModel;

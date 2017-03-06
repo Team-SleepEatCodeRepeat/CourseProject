@@ -62,7 +62,7 @@ public class OkHttpRequester implements IOkHttpRequester {
         try {
             Response response = this.okHttpClient.newCall(request).execute();
 
-            IOkHttpResponse parsedResponse = httpResponseFactory.createResponse(response.body());
+            IOkHttpResponse parsedResponse = httpResponseFactory.createResponse(response.body().string());
 
             return Observable.just(parsedResponse);
 

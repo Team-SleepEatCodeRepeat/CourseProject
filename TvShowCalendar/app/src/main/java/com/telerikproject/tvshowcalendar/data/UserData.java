@@ -47,7 +47,7 @@ public class UserData implements IUserData {
                 .map(new Function<IOkHttpResponse, IUserModel>() {
                     @Override
                     public IUserModel apply(IOkHttpResponse okHttpResponse) throws Exception {
-                        String respBody = okHttpResponse.getBody().string();
+                        String respBody = okHttpResponse.getBody();
                         String userJson = jsonParser.getDirectMember(respBody, "user");
                         IUserModel user = jsonParser.fromJson(userJson, userModelType);
 
@@ -68,7 +68,7 @@ public class UserData implements IUserData {
                 .map(new Function<IOkHttpResponse, IUserModel>() {
                     @Override
                     public IUserModel apply(IOkHttpResponse okHttpResponse) throws Exception {
-                        String respBody = okHttpResponse.getBody().string();
+                        String respBody = okHttpResponse.getBody();
                         String userJson = jsonParser.getDirectMember(respBody, "result");
                         IUserModel user = jsonParser.fromJson(userJson, userModelType);
 

@@ -79,7 +79,6 @@ public class EpisodeListAdapter extends BaseAdapter {
             @Override
 
             public void onClick(View v) {
-                Toast.makeText(context, "Clicked Episode List Adapter", Toast.LENGTH_LONG);
             }
         });
 

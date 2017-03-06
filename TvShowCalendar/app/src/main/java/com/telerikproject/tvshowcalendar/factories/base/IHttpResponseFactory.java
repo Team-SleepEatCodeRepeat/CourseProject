@@ -5,5 +5,5 @@ import com.telerikproject.tvshowcalendar.utils.base.IOkHttpResponse;
 import okhttp3.ResponseBody;
 
 public interface IHttpResponseFactory {
-    IOkHttpResponse createResponse(final ResponseBody body);
+    IOkHttpResponse createResponse(final String body);
 }

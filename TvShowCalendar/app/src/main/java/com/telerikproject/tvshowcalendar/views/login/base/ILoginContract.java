@@ -1,6 +1,6 @@
 package com.telerikproject.tvshowcalendar.views.login.base;
 
-import com.telerikproject.tvshowcalendar.fragments.ILoadingFragment;
+import com.telerikproject.tvshowcalendar.fragments.base.ILoadingFragment;
 import com.telerikproject.tvshowcalendar.views.base.BasePresenter;
 import com.telerikproject.tvshowcalendar.views.base.BaseView;
 

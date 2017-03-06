@@ -1,27 +1,17 @@
 package com.telerikproject.tvshowcalendar.views.serialInfo;
 
-import android.graphics.drawable.Drawable;
-import android.media.Image;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
-import android.text.method.ScrollingMovementMethod;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.telerikproject.tvshowcalendar.BaseApplication;
 import com.telerikproject.tvshowcalendar.R;
 import com.telerikproject.tvshowcalendar.fragments.BackToolbarFragment;
-import com.telerikproject.tvshowcalendar.fragments.ILoadingFragment;
+import com.telerikproject.tvshowcalendar.fragments.base.ILoadingFragment;
 import com.telerikproject.tvshowcalendar.modules.ControllerModule;
 import com.telerikproject.tvshowcalendar.views.serialInfo.base.ISerialInfoContract;
-
-import org.w3c.dom.Text;
 
 import javax.inject.Inject;
 

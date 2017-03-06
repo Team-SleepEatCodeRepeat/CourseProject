@@ -8,11 +8,11 @@ import okhttp3.ResponseBody;
 public class HttpResponseFactory implements IHttpResponseFactory {
 
     @Override
-    public IOkHttpResponse createResponse(final ResponseBody body) {
+    public IOkHttpResponse createResponse(final String body) {
         return new IOkHttpResponse() {
 
             @Override
-            public ResponseBody getBody() {
+            public String getBody() {
                 return body;
             }
         };

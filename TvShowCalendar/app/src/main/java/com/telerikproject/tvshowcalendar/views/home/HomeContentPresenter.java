@@ -1,10 +1,6 @@
 package com.telerikproject.tvshowcalendar.views.home;
 
-import com.telerikproject.tvshowcalendar.fragments.ILoadingFragment;
 import com.telerikproject.tvshowcalendar.models.ITvShow;
-import com.telerikproject.tvshowcalendar.models.TvShow;
-import com.telerikproject.tvshowcalendar.models.popularTvShows.TvShowModel;
-import com.telerikproject.tvshowcalendar.models.popularTvShows.base.IPopularTvShowsModel;
 import com.telerikproject.tvshowcalendar.data.base.ITvShowData;
 import com.telerikproject.tvshowcalendar.views.home.base.IHomeContract;
 
@@ -16,7 +12,6 @@ import javax.inject.Inject;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 
 public class HomeContentPresenter implements IHomeContract.Presenter {

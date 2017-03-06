@@ -51,8 +51,8 @@ public class TvShowData implements ITvShowData {
                 .map(new Function<IOkHttpResponse, List<ITvShow>>() {
                     @Override
                     public List<ITvShow> apply(IOkHttpResponse okHttpResponse) throws Exception {
-                        ResponseBody respBody = okHttpResponse.getBody();
-                        IPopularTvShowsModel tvShows = jsonParser.fromJson(respBody.string(), popularTvShowsType);
+                        String respBody = okHttpResponse.getBody();
+                        IPopularTvShowsModel tvShows = jsonParser.fromJson(respBody, popularTvShowsType);
 
                         List<TvShowModel> tvShowModels = tvShows.getResults();
                         return parseTvShowModels(tvShowModels);
@@ -66,8 +66,8 @@ public class TvShowData implements ITvShowData {
                 .map(new Function<IOkHttpResponse, IDetailedTvShowModel>() {
                     @Override
                     public IDetailedTvShowModel apply(IOkHttpResponse okHttpResponse) throws Exception {
-                        ResponseBody respBody = okHttpResponse.getBody();
-                        IDetailedTvShowModel tvShow = jsonParser.fromJson(respBody.string(), detailedTvShowModelType);
+                        String respBody = okHttpResponse.getBody();
+                        IDetailedTvShowModel tvShow = jsonParser.fromJson(respBody, detailedTvShowModelType);
                         return tvShow;
 
                     }
@@ -80,8 +80,8 @@ public class TvShowData implements ITvShowData {
                 .map(new Function<IOkHttpResponse, ITvShowSeasonModel>() {
                     @Override
                     public ITvShowSeasonModel apply(IOkHttpResponse okHttpResponse) throws Exception {
-                        ResponseBody respBody = okHttpResponse.getBody();
-                        ITvShowSeasonModel season = jsonParser.fromJson(respBody.string(), tvShowSeasonModelType);
+                        String respBody = okHttpResponse.getBody();
+                        ITvShowSeasonModel season = jsonParser.fromJson(respBody, tvShowSeasonModelType);
 
                         return season;
                     }
@@ -94,8 +94,8 @@ public class TvShowData implements ITvShowData {
                 .map(new Function<IOkHttpResponse, List<ITvShow>>() {
                     @Override
                     public List<ITvShow> apply(IOkHttpResponse okHttpResponse) throws Exception {
-                        ResponseBody respBody = okHttpResponse.getBody();
-                        IPopularTvShowsModel tvShows = jsonParser.fromJson(respBody.string(), popularTvShowsType);
+                        String respBody = okHttpResponse.getBody();
+                        IPopularTvShowsModel tvShows = jsonParser.fromJson(respBody, popularTvShowsType);
 
                         List<TvShowModel> tvShowModels = tvShows.getResults();
                         return parseTvShowModels(tvShowModels);

@@ -1,6 +1,6 @@
 package com.telerikproject.tvshowcalendar.views.serialInfo;
 
-import com.telerikproject.tvshowcalendar.fragments.ILoadingFragment;
+import com.telerikproject.tvshowcalendar.fragments.base.ILoadingFragment;
 import com.telerikproject.tvshowcalendar.models.detailedTvShow.base.IDetailedTvShowModel;
 import com.telerikproject.tvshowcalendar.data.base.ITvShowData;
 import com.telerikproject.tvshowcalendar.views.serialInfo.base.ISerialInfoContract;

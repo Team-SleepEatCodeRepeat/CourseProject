@@ -1,4 +1,4 @@
-package com.telerikproject.tvshowcalendar.fragments;
+package com.telerikproject.tvshowcalendar.fragments.base;
 
 import android.content.Context;
 
