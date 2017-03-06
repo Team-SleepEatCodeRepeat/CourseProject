@@ -1,5 +1,6 @@
 package com.telerikproject.tvshowcalendar.views.serialInfo;
 
+import com.telerikproject.tvshowcalendar.constants.base.ITheMovieDbConstants;
 import com.telerikproject.tvshowcalendar.fragments.base.ILoadingFragment;
 import com.telerikproject.tvshowcalendar.models.detailedTvShow.base.IDetailedTvShowModel;
 import com.telerikproject.tvshowcalendar.data.base.ITvShowData;
@@ -18,9 +19,12 @@ public class SerialInfoContentPresenter implements ISerialInfoContract.Presenter
 
     private final ITvShowData tvShowData;
 
+    private final ITheMovieDbConstants theMovieDbConstants;
+
     @Inject
-    public SerialInfoContentPresenter(ITvShowData tvShowData) {
+    public SerialInfoContentPresenter(ITvShowData tvShowData, ITheMovieDbConstants theMovieDbConstants) {
         this.tvShowData = tvShowData;
+        this.theMovieDbConstants = theMovieDbConstants;
     }
 
     @Override
@@ -49,7 +53,7 @@ public class SerialInfoContentPresenter implements ISerialInfoContract.Presenter
                     public void onNext(IDetailedTvShowModel value) {
 
                         String description = value.getOverview();
-                        String image = String.format("%s%s", "https://image.tmdb.org/t/p/w640", value.getBackdropPath());
+                        String image = String.format("%s%s", theMovieDbConstants.getImageUrl(), value.getBackdropPath());
                         String rating = String.valueOf(value.getVoteAverage());
                         int numOfSeasons = value.getNumberOfSeasons();
 

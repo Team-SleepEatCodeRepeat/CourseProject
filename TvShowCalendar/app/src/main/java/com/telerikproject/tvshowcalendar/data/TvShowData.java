@@ -107,7 +107,7 @@ public class TvShowData implements ITvShowData {
         final List<ITvShow> parsedTvShows = new ArrayList<>();
 
         for (TvShowModel tvShow : tvShowModels) {
-            String poster = "https://image.tmdb.org/t/p/w640" + tvShow.getPoster();
+            String poster = tmdbConstants.getImageUrl() + tvShow.getPoster();
             String name = tvShow.getName();
             String vote = String.valueOf((double) Math.round(tvShow.getVote() * 10) / 10 + " / 10");
             String id = String.valueOf(tvShow.getId());
