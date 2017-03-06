@@ -8,6 +8,8 @@ import android.widget.Button;
 
 import com.telerikproject.tvshowcalendar.BaseApplication;
 import com.telerikproject.tvshowcalendar.R;
+import com.telerikproject.tvshowcalendar.factories.LoadingFactory;
+import com.telerikproject.tvshowcalendar.factories.base.ILoadingFactory;
 import com.telerikproject.tvshowcalendar.fragments.BackToolbarFragment;
 import com.telerikproject.tvshowcalendar.fragments.base.ILoadingFragment;
 import com.telerikproject.tvshowcalendar.modules.ControllerModule;
@@ -28,7 +30,7 @@ public class SerialInfoActivity extends AppCompatActivity {
     FragmentManager fragmentManager;
 
     @Inject
-    ILoadingFragment loadingFragment;
+    ILoadingFactory loadingFactory;
 
     private SerialInfoContentFragment content;
 
@@ -43,7 +45,7 @@ public class SerialInfoActivity extends AppCompatActivity {
         content.setPresenter(contentPresenter);
 
         this.id = getIntent().getStringExtra("id");
-        this.loading = loadingFragment.create(this);
+        this.loading = loadingFactory.create();
 
         backFragment = (BackToolbarFragment) fragmentManager.findFragmentById(R.id.back_toolbar);
 

@@ -8,6 +8,7 @@ import android.support.v7.widget.Toolbar;
 
 import com.telerikproject.tvshowcalendar.BaseApplication;
 import com.telerikproject.tvshowcalendar.R;
+import com.telerikproject.tvshowcalendar.factories.base.ILoadingFactory;
 import com.telerikproject.tvshowcalendar.fragments.base.ILoadingFragment;
 import com.telerikproject.tvshowcalendar.modules.ControllerModule;
 import com.telerikproject.tvshowcalendar.views.login.base.ILoginContract;
@@ -20,11 +21,6 @@ public class LoginActivity extends AppCompatActivity {
 
     @Inject
     FragmentManager fragmentManager;
-
-    @Inject
-    ILoadingFragment loadingFragment;
-
-    ILoadingFragment loading;
 
     private LoginFragment loginFragment;
 
@@ -40,7 +36,6 @@ public class LoginActivity extends AppCompatActivity {
         loginFragment = (LoginFragment) fragmentManager.findFragmentById(R.id.fragment_login);
         loginFragment.setPresenter(presenter);
         presenter.setView(loginFragment);
-        this.loading = loadingFragment.create(this);
     }
 
     private void injectDependencies() {

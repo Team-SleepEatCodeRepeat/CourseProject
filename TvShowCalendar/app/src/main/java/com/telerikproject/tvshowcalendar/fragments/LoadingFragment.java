@@ -10,10 +10,6 @@ public class LoadingFragment implements ILoadingFragment {
     private ProgressDialog loadingDialog;
     private Context context;
 
-    public LoadingFragment() {
-
-    }
-
     public void show() {
         if (this.loadingDialog == null) {
             this.loadingDialog = new ProgressDialog(this.context);
@@ -27,12 +23,6 @@ public class LoadingFragment implements ILoadingFragment {
     public void hide() {
         this.loadingDialog.hide();
         this.loadingDialog.dismiss();
-    }
-
-    public ILoadingFragment create(Context context) {
-        LoadingFragment loadingFragment = new LoadingFragment();
-        loadingFragment.setContext(context);
-        return loadingFragment;
     }
 
     public void setContext(Context context) {

@@ -6,6 +6,4 @@ public interface ILoadingFragment {
     void show();
 
     void hide();
-
-    ILoadingFragment create(Context context);
 }

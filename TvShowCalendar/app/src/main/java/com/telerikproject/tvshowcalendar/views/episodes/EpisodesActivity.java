@@ -7,6 +7,7 @@ import android.view.View;
 
 import com.telerikproject.tvshowcalendar.BaseApplication;
 import com.telerikproject.tvshowcalendar.R;
+import com.telerikproject.tvshowcalendar.factories.base.ILoadingFactory;
 import com.telerikproject.tvshowcalendar.fragments.BackToolbarFragment;
 import com.telerikproject.tvshowcalendar.fragments.base.ILoadingFragment;
 import com.telerikproject.tvshowcalendar.modules.ControllerModule;
@@ -23,7 +24,7 @@ public class EpisodesActivity extends AppCompatActivity {
     IEpisodesContract.Presenter presenter;
 
     @Inject
-    ILoadingFragment loadingFragment;
+    ILoadingFactory loadingFactory;
 
     ILoadingFragment loading;
 
@@ -37,7 +38,7 @@ public class EpisodesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_episodes);
         this.injectDependencies();
-        this.loading = loadingFragment.create(this);
+        this.loading = loadingFactory.create();
         this.seasonNumber = getIntent().getStringExtra("seasonNumber");
         this.tvShowId = getIntent().getStringExtra("tvShowId");
 

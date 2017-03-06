@@ -7,6 +7,8 @@ import android.support.v4.app.FragmentManager;
 import com.telerikproject.tvshowcalendar.constants.base.ITheMovieDbConstants;
 import com.telerikproject.tvshowcalendar.data.base.ITvShowData;
 import com.telerikproject.tvshowcalendar.data.base.IUserData;
+import com.telerikproject.tvshowcalendar.factories.LoadingFactory;
+import com.telerikproject.tvshowcalendar.factories.base.ILoadingFactory;
 import com.telerikproject.tvshowcalendar.models.user.base.IUserModel;
 import com.telerikproject.tvshowcalendar.views.episodes.EpisodesPresenter;
 import com.telerikproject.tvshowcalendar.views.episodes.base.IEpisodesContract;
@@ -54,6 +56,12 @@ public class ControllerModule {
     @Provides
     IHomeContract.Presenter provideHomeContentPresenter(ITvShowData tvShowData) {
         return new HomeContentPresenter(tvShowData);
+    }
+
+    @Inject
+    @Provides
+    ILoadingFactory provideLoadingFactory(Activity activity) {
+        return new LoadingFactory(activity);
     }
 
     @Inject

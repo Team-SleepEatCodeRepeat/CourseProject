@@ -21,11 +21,6 @@ public class RegisterActivity extends AppCompatActivity {
     @Inject
     FragmentManager fragmentManager;
 
-    @Inject
-    ILoadingFragment loadingFragment;
-
-    ILoadingFragment loading;
-
     private RegisterFragment registerFragment;
 
     @Override
@@ -40,7 +35,6 @@ public class RegisterActivity extends AppCompatActivity {
         registerFragment = (RegisterFragment) fragmentManager.findFragmentById(R.id.fragment_register);
         registerFragment.setPresenter(presenter);
         presenter.setView(registerFragment);
-        this.loading = loadingFragment.create(this);
     }
 
     private void injectDependencies() {

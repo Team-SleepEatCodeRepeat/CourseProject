@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.telerikproject.tvshowcalendar.BaseApplication;
 import com.telerikproject.tvshowcalendar.R;
+import com.telerikproject.tvshowcalendar.factories.base.ILoadingFactory;
 import com.telerikproject.tvshowcalendar.fragments.base.ILoadingFragment;
 import com.telerikproject.tvshowcalendar.modules.ControllerModule;
 import com.telerikproject.tvshowcalendar.views.login.LoginActivity;
@@ -35,7 +36,7 @@ public class RegisterFragment extends Fragment implements IRegisterContract.View
     EditText passwordET;
 
     @Inject
-    ILoadingFragment loadingFragment;
+    ILoadingFactory loadingFactory;
 
     private ILoadingFragment loading;
 
@@ -65,7 +66,7 @@ public class RegisterFragment extends Fragment implements IRegisterContract.View
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        this.loading = this.loadingFragment.create(getActivity());
+        this.loading = this.loadingFactory.create();
 
     }
 

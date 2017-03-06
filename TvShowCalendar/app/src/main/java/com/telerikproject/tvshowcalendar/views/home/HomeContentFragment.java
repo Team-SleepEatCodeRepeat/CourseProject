@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.telerikproject.tvshowcalendar.BaseApplication;
 import com.telerikproject.tvshowcalendar.R;
 import com.telerikproject.tvshowcalendar.adapters.GridAdapter;
+import com.telerikproject.tvshowcalendar.factories.base.ILoadingFactory;
 import com.telerikproject.tvshowcalendar.fragments.base.ILoadingFragment;
 import com.telerikproject.tvshowcalendar.models.ITvShow;
 import com.telerikproject.tvshowcalendar.modules.ControllerModule;
@@ -31,7 +32,7 @@ public class HomeContentFragment extends Fragment implements IHomeContract.View 
     public Activity mActivity;
 
     @Inject
-    ILoadingFragment loadingFragment;
+    ILoadingFactory loadingFactory;
 
     TextView notFoundTextView;
 
@@ -61,7 +62,7 @@ public class HomeContentFragment extends Fragment implements IHomeContract.View 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        this.loading = this.loadingFragment.create(mActivity);
+        this.loading = this.loadingFactory.create();
     }
 
     @Override
