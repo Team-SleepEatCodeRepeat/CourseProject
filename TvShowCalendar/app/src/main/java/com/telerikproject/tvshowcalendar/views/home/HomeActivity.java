@@ -1,11 +1,14 @@
 package com.telerikproject.tvshowcalendar.views.home;
 
+import android.app.NotificationManager;
 import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.NotificationCompat;
 import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -41,6 +44,20 @@ public class HomeActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         handleSearchQuery(intent);
+        notifyNewEpisode("The Originals" , "17 Mar. 2017");
+    }
+
+    public void notifyNewEpisode(String title, String date) {
+        NotificationCompat.Builder b = new NotificationCompat.Builder(this);
+        b.setAutoCancel(true)
+                .setDefaults(NotificationCompat.DEFAULT_VIBRATE)
+                .setWhen(System.currentTimeMillis())
+                .setSmallIcon(R.drawable.ic_notification)
+                .setContentTitle("New episode of " + title)
+                .setContentText("Starts on " + date);
+
+        NotificationManager nm = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
+        nm.notify(1, b.build());
     }
 
     @Override
